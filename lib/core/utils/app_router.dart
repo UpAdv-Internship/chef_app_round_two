@@ -1,3 +1,4 @@
+import 'package:chef_app_round_two/features/sign_in/presentation/screen/login_screen.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -35,6 +36,8 @@ class AppRoutes {
 
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
+      case Routes.login:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
 
       default:
         return null;
