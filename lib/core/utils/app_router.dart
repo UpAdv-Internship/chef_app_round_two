@@ -1,8 +1,8 @@
+import 'package:chef_app_round_two/features/profile/presentation/screens/home_screen.dart';
+import 'package:chef_app_round_two/features/profile/presentation/screens/update_profile.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/screen/login_screen.dart';
-import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/splash/presentation/screens/change_lang_screen.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
@@ -32,6 +32,10 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.intitlRoute:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case Routes.home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.updateProfileScreen:
+        return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
 
       case Routes.changeLang:
         return MaterialPageRoute(builder: (_) => const ChangeLangScreen());
@@ -40,11 +44,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
 
       case Routes.signUp:
-        return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => SignUpCubit(),
-                  child: const SignUpScreen(),
-                ));
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
       default:
         return null;
