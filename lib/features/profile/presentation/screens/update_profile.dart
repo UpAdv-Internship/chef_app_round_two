@@ -1,3 +1,4 @@
+import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chef_app_round_two/core/services/service_locator.dart';
@@ -59,13 +60,18 @@ class UpdateProfileScreen extends StatelessWidget {
                               alignment: Alignment.center,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(90),
-                                child: SizedBox(
-                                  width: 180.w,
-                                  height: 180.h,
-                                  child: CachedNetworkImage(
+                                child: Container(
+                                  padding: const EdgeInsets.all(0),
+                                  width: 180,
+                                  height: 180,
+                                  child: sl<UpdateProfileCubit>().image == null
+                                  ? CachedNetworkImage(
                                     fit: BoxFit.fill,
                                     imageUrl:
                                         sl<HomeCubit>().chefModel!.profilePic,
+                                        
+                                        // ? sl<HomeCubit>().chefModel!.profilePic
+                                        // : sl<UpdateProfileCubit>().image!.path,
                                     placeholder: (context, url) =>
                                         Shimmer.fromColors(
                                       baseColor: AppColors.grey,
@@ -76,7 +82,8 @@ class UpdateProfileScreen extends StatelessWidget {
                                         backgroundColor: AppColors.grey,
                                       ),
                                     ),
-                                  ),
+                                  )
+                                  : Image.file(File(sl<UpdateProfileCubit>().image!.path), fit: BoxFit.fill,)
                                 ),
                               ),
                             ),
