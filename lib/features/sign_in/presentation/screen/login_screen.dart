@@ -1,6 +1,7 @@
 import 'package:chef_app_round_two/core/utils/app_assets.dart';
 import 'package:chef_app_round_two/core/utils/app_colors.dart';
-import 'package:chef_app_round_two/core/utils/app_strings.dart';
+import 'package:chef_app_round_two/core/utils/app_router.dart';
+import 'package:chef_app_round_two/core/utils/commons.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_cubit.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_state.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/widgets/custom_button.dart';
@@ -117,7 +118,9 @@ class LoginScreen extends StatelessWidget {
                                 'Don’t have an account?',
                               ),
                               TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    navigate(context: context, route: Routes.signUp);
+                                  },
                                   child: Text(
                                     'Sign Up',
                                     style: Theme.of(context)
