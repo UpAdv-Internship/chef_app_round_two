@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigationAfterThreeSeconds() {
     Future.delayed(const Duration(seconds: 3), () {
-      navigateReplacment(context: context, route: Routes.changeLang);
+      navigateReplacment(context: context, route: Routes.signUp);
     });
 
     //.then((value)async {

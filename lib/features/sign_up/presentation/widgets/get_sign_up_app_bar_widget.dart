@@ -7,12 +7,18 @@ import 'package:flutter/material.dart';
 AppBar getSignUpAppBar(BuildContext context) {
   return AppBar(
     backgroundColor: AppColors.orange,
-    title: const Text(AppStrings.createEmail),
+    title: const Text(
+      AppStrings.createEmail,
+      style: TextStyle(color: AppColors.white),
+    ),
     leading: IconButton(
       onPressed: () {
         navigateReplacment(context: context, route: Routes.login);
       },
-      icon: const Icon(Icons.arrow_back),
+      icon: const Icon(
+        Icons.arrow_back,
+        color: AppColors.white,
+      ),
     ),
   );
 }
