@@ -23,7 +23,7 @@ class StepperWidget extends StatelessWidget {
             Icon(Icons.document_scanner_outlined),
           ],
           activeStepColor: AppColors.orange,
-          stepReachedAnimationEffect: Curves.ease,
+          stepReachedAnimationEffect: Curves.fastEaseInToSlowEaseOut,
           enableStepTapping: false,
           lineLength: 50,
           enableNextPreviousButtons: false,

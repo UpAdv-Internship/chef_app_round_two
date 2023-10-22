@@ -87,4 +87,8 @@ class AppStrings {
       'pleaseEnterValidChargeAtLeastTwentyChar';
   static const String next = 'next';
   static const String previous = 'previous';
+  static const String thisFieldIsRequired = 'thisFieldIsRequired';
+  static const String correctData = 'correctData';
+  static const String thePasswordDoesNotMatch = 'thePasswordDoesNotMatch';
+  static const String thisEmailIsUsedBefore = 'thisEmailIsUsedBefore';
 }

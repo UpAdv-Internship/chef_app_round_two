@@ -63,5 +63,12 @@
     "camera": "Camera",
     "gallery": "Gallery",
     "next":"Next",
-    "previous":"Previous"
+    "previous":"Previous",
+    "brandName":"Brand Name",
+    "createAccount":"Create Account",
+    "thisFieldIsRequired":"This Field Is Required",
+    "pleaseEnterValidBrandName":"Please Enter Valid Brand Name",
+    "correctData":"Correct Data",
+    "thePasswordDoesNotMatch":"The Password Does Not Match",
+    "thisEmailIsUsedBefore":"This Email Is Used Before"
 }

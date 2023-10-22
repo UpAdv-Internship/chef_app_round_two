@@ -31,15 +31,15 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   checkEmail() async {
     try {
-      emit(CheckEmailLoadingInitial());
+      emit(CheckEmailLoadingState());
       final result =
           await signUpRepo.checkEmail(email: emailTextEditingController.text);
       result.fold(
-        (invaild) => emit(CheckEmailFailureInitial(errMessage: "invlid Email")),
-        (valid) => emit(CheckEmailSuccessInitial()),
+        (invaild) => emit(CheckEmailFailureState(errMessage: invaild)),
+        (valid) => emit(CheckEmailSuccessState()),
       );
     } catch (e) {
-      emit(CheckEmailFailureInitial(errMessage: e.toString()));
+      emit(CheckEmailFailureState(errMessage: e.toString()));
     }
   }
 }
