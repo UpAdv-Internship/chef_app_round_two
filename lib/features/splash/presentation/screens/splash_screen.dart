@@ -1,6 +1,10 @@
+import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/utils/commons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/databases/api/end_points.dart';
+import '../../../../core/databases/cache/cache_helper.dart';
+import '../../../../core/services/service_locator.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_router.dart';
@@ -21,17 +25,13 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationAfterThreeSeconds() {
-    Future.delayed(const Duration(seconds: 3), () {
-      navigateReplacment(context: context, route: Routes.login);
-    });
-
-    //.then((value)async {
-    // await sl<CacheHelper>().getData(
-    // key: ApiKey.token,
-    // )==null?
-    // navigate(context: context, route: Routes.changeLan):
-    // navigate(context: context, route: Routes.home);
-    // });
+    Future.delayed(const Duration(seconds: 3)).then((value)async {
+     await sl<CacheHelper>().getData(
+     key: Apikeys.token,
+     )==null?
+     navigateReplacment(context: context, route: Routes.changeLang):
+     navigateReplacment(context: context, route: Routes.home);
+     });
   }
 
   @override
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              AppStrings.chefApp,
+              AppStrings.chefApp.tr(context),
               style: GoogleFonts.lato(
                   color: AppColors.black,
                   fontSize: 36,

@@ -7,7 +7,7 @@ AppBar getSignUpAppBar(BuildContext context) {
   return AppBar(
     backgroundColor: AppColors.orange,
     title: const Text(
-      AppStrings.createEmail,
+      AppStrings.createAccount,
       style: TextStyle(color: AppColors.white),
     ),
     leading: IconButton(
