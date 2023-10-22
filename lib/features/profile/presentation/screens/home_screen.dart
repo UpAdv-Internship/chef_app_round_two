@@ -53,6 +53,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 15.h),
                 //! Name & Email
+
                 Column(
                   children: [
                     state is GetDataLoadingState
@@ -71,6 +72,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 25.h),
+
                 //! List Tiles
                 Padding(
                   padding: const EdgeInsets.all(10),
