@@ -38,7 +38,7 @@
     "mealPrice": "Meal Price",
     "mealNumber": "Number",
     "mealQuantity": "Quantity",
-    "upladPhoto": "Uplad Photo",
+    "upladPhoto": "Please Upload Photo",
     "addToMenu": "Add To Menu",
     "mealAddedSucessfully": "Meal Added Sucessfully",
     "mealDeletedSucessfully": "mealDeletedSucessfully",
@@ -71,5 +71,6 @@
     "correctData":"Correct Data",
     "thePasswordDoesNotMatch":"The Password Does Not Match",
     "thisEmailIsUsedBefore":"This Email Is Used Before",
-    "PleaseCheckYourPassword": "Please Check Your Password"
+    "PleaseCheckYourPassword": "Please Check Your Password",
+    "logoOrPicture":"Logo Or Your Picture"
 }

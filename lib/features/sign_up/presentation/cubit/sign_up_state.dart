@@ -11,5 +11,6 @@ final class CheckEmailFailureState extends SignUpState {
 }
 
 final class CheckEmailLoadingState extends SignUpState {}
+final class ChangeImageState extends SignUpState {}
 
 final class UpdateStepperIndexState extends SignUpState {}

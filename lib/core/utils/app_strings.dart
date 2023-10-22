@@ -92,4 +92,5 @@ class AppStrings {
   static const String correctData = 'correctData';
   static const String thePasswordDoesNotMatch = 'thePasswordDoesNotMatch';
   static const String thisEmailIsUsedBefore = 'thisEmailIsUsedBefore';
+    static const String logoOrPicture = 'logoOrPicture';
 }

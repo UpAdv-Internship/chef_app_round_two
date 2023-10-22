@@ -39,7 +39,7 @@
     "mealPrice": "سعر الوجبة",
     "mealNumber": "بالعدد",
     "mealQuantity": "بالكمية",
-    "upladPhoto": "اضافة صورة",
+    "upladPhoto": "برجاء اضافة صورة",
     "addToMenu": "إضافة للمنيو",
     "mealAddedSucessfully": "تم إضافة الوجبة بنجاح",
     "mealDeletedSucessfully": "تم حذف الوجبة بنجاح",
@@ -71,5 +71,6 @@
     "correctData":"بيانات صحيحه",
     "thePasswordDoesNotMatch":"كلمة السر غير متطابقه",
     "thisEmailIsUsedBefore":"هذا الحساب مستخدم من قبل",
-    "PleaseCheckYourPassword": "من فضلك تأكد من كلمة السر"
+    "PleaseCheckYourPassword": "من فضلك تأكد من كلمة السر",
+    "logoOrPicture":"الشعار او الصوره الشخصية"
 }
