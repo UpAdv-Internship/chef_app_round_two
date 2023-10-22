@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import '../../../../core/utils/app_colors.dart';
 
 class AliTextFormField extends StatelessWidget {
-  AliTextFormField(
+  const AliTextFormField(
       {super.key,
       required this.controller,
       this.validate,
@@ -14,14 +14,14 @@ class AliTextFormField extends StatelessWidget {
       this.icon,
       this.suffixIconOnPressed,
       this.inputFormatters});
-  List<TextInputFormatter>? inputFormatters;
-  TextEditingController controller;
-  String? hint;
-  String? label;
-  String? Function(String?)? validate;
-  bool isPassword;
-  IconData? icon;
-  VoidCallback? suffixIconOnPressed;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextEditingController controller;
+  final String? hint;
+  final String? label;
+  final String? Function(String?)? validate;
+  final bool isPassword;
+  final IconData? icon;
+  final VoidCallback? suffixIconOnPressed;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
