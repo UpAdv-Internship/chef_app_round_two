@@ -1,6 +1,6 @@
 class AppStrings {
   //! Choose Language
-  static const String chafApp = 'Chef App';
+  static const String chefApp = 'Chef App';
   static const String welcome = 'مرحبا بك';
   static const String chooseLang = 'من فضلك اختر لغتك';
   static const String arabic = 'العربية';
