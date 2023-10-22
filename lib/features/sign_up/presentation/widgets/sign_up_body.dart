@@ -15,7 +15,9 @@ class SignUpBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomScrollView(
       slivers: [
+        SliverToBoxAdapter(child: SizedBox(height: 20)),
         SliverToBoxAdapter(child: StepperWidget()),
+        SliverToBoxAdapter(child: SizedBox(height: 20)),
         SliverToBoxAdapter(child: StepperBody()),
       ],
     );
