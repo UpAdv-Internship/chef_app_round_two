@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: getAppTheme(),
             debugShowCheckedModeBanner: false,
-            initialRoute: Routes.signUp,
+            initialRoute: Routes.intitlRoute,
             onGenerateRoute: AppRoutes.generateRoute,
           );
         });
