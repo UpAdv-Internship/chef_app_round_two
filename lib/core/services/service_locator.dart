@@ -4,6 +4,7 @@ import 'package:chef_app_round_two/core/databases/cache/cache_helper.dart';
 import 'package:chef_app_round_two/features/profile/data/repository/profile_repo.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
+import 'package:chef_app_round_two/features/sign_in/data/reposatory/login_repo.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_cubit.dart';
@@ -18,10 +19,11 @@ void initServiceLocator() {
   sl.registerLazySingleton(() => HomeCubit(sl()));
 
   sl.registerLazySingleton(() => ProfileRepo());
+  sl.registerLazySingleton(() => LoginRepository());
 
   sl.registerLazySingleton(() => Dio());
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));
-  sl.registerLazySingleton(() => LoginCubit());
+  sl.registerLazySingleton(() => LoginCubit(sl()));
   sl.registerLazySingleton(() => SignUpCubit());
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }
