@@ -19,12 +19,11 @@ void initServiceLocator() {
   sl.registerLazySingleton(() => HomeCubit(sl()));
   sl.registerLazySingleton(() => ProfileRepo());
   sl.registerLazySingleton(() => LoginRepository());
-
   sl.registerLazySingleton(() => Dio());
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));
   sl.registerLazySingleton(() => LoginCubit(sl()));
-  sl.registerLazySingleton(() => SignUpCubit());
-  sl.registerLazySingleton(() => LoginCubit());
+  sl.registerLazySingleton(() => SignUpCubit(sl()));
+  sl.registerLazySingleton(() => LoginCubit(sl()));
   sl.registerLazySingleton(() => SignUpRepo());
   sl.registerLazySingleton(() => SignUpCubit(sl()));
   sl.registerLazySingleton(() => InternetConnectionChecker());
