@@ -17,13 +17,13 @@ class StepperBody extends StatelessWidget {
       builder: (context, state) {
         switch (signUpCubit.currentStep) {
           case 0:
-            return const SignUpStep3();
-          case 1:
-            return const SignUpStep4();
-          case 2:
             return const SignUpStep1();
-          case 3:
+          case 1:
             return const SignUpStep2();
+          case 2:
+            return const SignUpStep3();
+          case 3:
+            return const SignUpStep4();
           default:
             return Container();
         }
