@@ -39,8 +39,8 @@ class HomeScreen extends StatelessWidget {
                         : ClipRRect(
                             borderRadius: BorderRadius.circular(90),
                             child: SizedBox(
-                              width: 180.w,
-                              height: 180.h,
+                              width: 180,
+                              height: 180,
                               child: CachedNetworkImage(
                                 fit: BoxFit.fill,
                                 imageUrl: sl<HomeCubit>().chefModel!.profilePic,
