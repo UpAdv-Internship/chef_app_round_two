@@ -45,7 +45,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     }
   }
 
-    void changeImage(value) {
+  void changeImage(value) {
     profilePic = value;
     emit(ChangeImageState());
   }
