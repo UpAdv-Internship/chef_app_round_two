@@ -8,16 +8,26 @@ class ProfileTextFormField extends StatelessWidget {
     required this.label,
     required this.hint,
     required this.keyboardType,
+    this.validator,
   });
   final TextEditingController controller;
   final String label;
   final String hint;
   final TextInputType keyboardType;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator ??
+          (value) {
+            if (value!.isEmpty) {
+              return 'This cannot be empty';
+            }
+            return null;
+          },
       controller: controller,
       keyboardType: keyboardType,
+      cursorColor: AppColors.primary,
       decoration: InputDecoration(
         label: Text(label),
         labelStyle: const TextStyle(color: AppColors.grey),
@@ -34,6 +44,12 @@ class ProfileTextFormField extends StatelessWidget {
           borderSide: const BorderSide(
             color: AppColors.primary,
             width: 2,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(
+            color: AppColors.red,
           ),
         ),
         errorBorder: OutlineInputBorder(

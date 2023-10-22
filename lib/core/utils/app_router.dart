@@ -1,5 +1,5 @@
-import 'package:chef_app_round_two/features/profile/screens/home_screen.dart';
-import 'package:chef_app_round_two/features/profile/screens/update_profile.dart';
+import 'package:chef_app_round_two/features/profile/presentation/screens/home_screen.dart';
+import 'package:chef_app_round_two/features/profile/presentation/screens/update_profile.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
