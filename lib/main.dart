@@ -17,6 +17,7 @@ void main() async {
         BlocProvider(create: (context) => sl<UpdateProfileCubit>()),
         BlocProvider(create: (context) => sl<HomeCubit>()..getData()),
         BlocProvider(create: (context) => sl<LoginCubit>()),
+        BlocProvider(create: (context) => sl<LoginCubit>()),
       ],
       child: const MyApp(),
     ),
