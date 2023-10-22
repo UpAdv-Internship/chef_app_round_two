@@ -78,9 +78,13 @@ class AppStrings {
   static const String minCharge = 'minCharge';
   static const String brandName = 'brandName';
   static const String update = 'update';
-  static const String pleaseEnterValidPhoneAtLeastTenChar = 'pleaseEnterValidPhoneAtLeastTenChar';
+  static const String pleaseEnterValidPhoneAtLeastTenChar =
+      'pleaseEnterValidPhoneAtLeastTenChar';
   static const String pleaseEnterValidBrandName = 'pleaseEnterValidBrandName';
   static const String pleaseEnterValidMinCharge = 'pleaseEnterValidMinCharge';
   static const String pleaseEnterValidLocation = 'pleaseEnterValidLocation';
-  static const String pleaseEnterValidChargeAtLeastTwentyChar = 'pleaseEnterValidChargeAtLeastTwentyChar';
+  static const String pleaseEnterValidChargeAtLeastTwentyChar =
+      'pleaseEnterValidChargeAtLeastTwentyChar';
+  static const String next = 'next';
+  static const String previous = 'previous';
 }

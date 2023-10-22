@@ -1,3 +1,4 @@
+import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_state.dart';
@@ -67,9 +68,9 @@ class SignUpStep1 extends StatelessWidget {
                             signupCubit.increaseStepperIndex();
                           }
                         },
-                        child: const Text(
-                          AppStrings.next,
-                          style: TextStyle(
+                        child: Text(
+                          AppStrings.next.tr(context),
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         )),
