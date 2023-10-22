@@ -78,7 +78,8 @@ class ChangeLangScreen extends StatelessWidget {
                                   ),
                               child: const Text(
                                 'English',
-                                style: TextStyle(fontSize: 24),
+                                style: TextStyle(
+                                    fontSize: 24, color: AppColors.white),
                               )),
                         ),
                         const Spacer(),
@@ -100,7 +101,8 @@ class ChangeLangScreen extends StatelessWidget {
                                   ),
                               child: const Text(
                                 'العربية',
-                                style: TextStyle(fontSize: 24),
+                                style: TextStyle(
+                                    fontSize: 24, color: AppColors.white),
                               )),
                         ),
                       ],
