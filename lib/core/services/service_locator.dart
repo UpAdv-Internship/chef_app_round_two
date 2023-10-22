@@ -7,6 +7,7 @@ import 'package:chef_app_round_two/features/profile/presentation/cubits/update_p
 import 'package:chef_app_round_two/features/sign_in/data/reposatory/login_repo.dart';
 import 'package:chef_app_round_two/features/sign_up/data/repositories/sign_up_repositories.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
+import 'package:chef_app_round_two/features/splash/presentation/cubit/global_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -23,6 +24,7 @@ void initServiceLocator() {
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));
   sl.registerLazySingleton(() => LoginCubit(sl()));
   sl.registerLazySingleton(() => SignUpCubit(sl()));
+  sl.registerLazySingleton(() => GlobalCubit());
   sl.registerLazySingleton(() => SignUpRepo());
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }

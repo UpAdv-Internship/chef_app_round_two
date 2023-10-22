@@ -1,7 +1,9 @@
 import 'package:chef_app_round_two/core/Widgets/custom_loading_indecator.dart';
+import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/utils/app_assets.dart';
 import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:chef_app_round_two/core/utils/app_router.dart';
+import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/core/utils/commons.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_cubit.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_state.dart';
@@ -47,15 +49,16 @@ class LoginScreen extends StatelessWidget {
                 child: BlocConsumer<LoginCubit, LoginState>(
                   listener: (context, state) {
                     if (state is LoginSuccessState) {
-                    showToast(
-                        message: 'login successfully',
-                        toastStates: ToastStates.success);
-                    navigateReplacment(context: context, route: Routes.home);
-                  }
-                  if (state is LoginErrorState) {
-                    showToast(
-                        message: 'login faild', toastStates: ToastStates.error);
-                  }
+                      showToast(
+                          message: 'login successfully',
+                          toastStates: ToastStates.success);
+                      navigateReplacment(context: context, route: Routes.home);
+                    }
+                    if (state is LoginErrorState) {
+                      showToast(
+                          message: 'login faild',
+                          toastStates: ToastStates.error);
+                    }
                   },
                   builder: (context, state) {
                     final loginCubit = BlocProvider.of<LoginCubit>(context);
@@ -66,37 +69,38 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           //!text field email
                           CustomLoginTextFormField(
-                              controller: loginCubit.emailController,
-                              hint: 'Email',
-                              validate: (data) {
+                            controller: loginCubit.emailController,
+                            hint: AppStrings.email.tr(context),
+                            validate: (data) {
                               if (data!.isEmpty ||
                                   !data.contains('@gmail.com')) {
-                            return "The email address you entered isn't connected to an account"
-                                    ;
-                              }   
+                                return "The email address you entered isn't connected to an account";
+                              }
 
                               return null;
                             },
-                              
-                              ),
-                              
+                          ),
+
                           SizedBox(
                             height: 32.h,
                           ),
                           //!text field password
                           CustomLoginTextFormField(
-                              controller: loginCubit.passwordController,
-                              isPassword: loginCubit.isLoginPasswordsShowing,
-                              icon: loginCubit.suffixIcon,
-                              suffixIconOnPressed:(){loginCubit.changeLoginPasswordSuffixIcon();}  ,
-                              hint: 'Password',validate: (data) {
+                            controller: loginCubit.passwordController,
+                            isPassword: loginCubit.isLoginPasswordsShowing,
+                            icon: loginCubit.suffixIcon,
+                            suffixIconOnPressed: () {
+                              loginCubit.changeLoginPasswordSuffixIcon();
+                            },
+                            hint: AppStrings.password.tr(context),
+                            validate: (data) {
                               if (data!.length < 6 || data.isEmpty) {
-                                return "The password that you've entered is incorrect"
-                                    ;
+                                return "The password that you've entered is incorrect";
                               }
 
                               return null;
-                            },),
+                            },
+                          ),
                           SizedBox(
                             height: 5.h,
                           ),
@@ -120,16 +124,17 @@ class LoginScreen extends StatelessWidget {
                             height: 40.h,
                           ),
                           //!sign in button
-                         state is LoginLoadingState
+                          state is LoginLoadingState
                               ? const CustomLoadingIndicator()
                               : CustomButton(
-                            onPressed: () {
-                              if(loginCubit.loginKey.currentState!.validate()){
-                                loginCubit.login();
-                              }
-                            },
-                            text: 'sign in',
-                          ),
+                                  onPressed: () {
+                                    if (loginCubit.loginKey.currentState!
+                                        .validate()) {
+                                      loginCubit.login();
+                                    }
+                                  },
+                                  text: 'sign in',
+                                ),
                           SizedBox(
                             height: 30.h,
                           ),
@@ -141,9 +146,8 @@ class LoginScreen extends StatelessWidget {
                               ),
                               TextButton(
                                   onPressed: () {
-                                    
-                                    navigate(context: context, route: Routes.signUp);
-
+                                    navigate(
+                                        context: context, route: Routes.signUp);
                                   },
                                   child: Text(
                                     'Sign Up',

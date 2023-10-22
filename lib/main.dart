@@ -5,6 +5,7 @@ import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cub
 import 'package:chef_app_round_two/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_cubit.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
+import 'package:chef_app_round_two/features/splash/presentation/cubit/global_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +20,8 @@ void main() async {
         BlocProvider(create: (context) => sl<HomeCubit>()..getData()),
         BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<SignUpCubit>()),
+        BlocProvider(create: (context) => sl<SignUpCubit>()),
+        BlocProvider(create: (context) => sl<GlobalCubit>()..getCachedLang()),
       ],
       child: const MyApp(),
     ),
