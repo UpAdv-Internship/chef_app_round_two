@@ -6,12 +6,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 
 class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   UpdateProfileCubit(this.profileRepo) : super(UpdateProfileInitial());
 
-  TextEditingController nameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();  
   TextEditingController phoneController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController brandNameController = TextEditingController();
@@ -19,7 +18,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   TextEditingController discController = TextEditingController();
   GlobalKey<FormState> updateProfileKey = GlobalKey<FormState>();
   XFile? image;
-
+    
   //! Image Picker
   void takePhoto(value) {
     image = value;

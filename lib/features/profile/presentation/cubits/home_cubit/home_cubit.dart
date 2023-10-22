@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:chef_app_round_two/features/profile/data/model/chef_data_model.dart';
 import 'package:chef_app_round_two/features/profile/data/repository/profile_repo.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_state.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
@@ -30,7 +27,6 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<XFile> downloadAndSaveImage(String imageUrl) async {
-    final dio = Dio();
     final directory = await getApplicationDocumentsDirectory();
     final filePath = '${directory.path}/image.jpg';
     return XFile(filePath);
