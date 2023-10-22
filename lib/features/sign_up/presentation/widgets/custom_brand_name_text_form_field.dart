@@ -14,6 +14,7 @@ class CustomBrandNameTextFormField extends StatelessWidget {
     return CustomTextFormField(
       controller: signupCubit.brandNameTextEditingController,
       lable: AppStrings.brandName,
+      onChanged: (value){},
       validate: (value) {
         if (value!.isEmpty) {
           return "هذا الحقل مطلوب";

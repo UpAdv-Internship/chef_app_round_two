@@ -1,9 +1,11 @@
+import 'package:chef_app_round_two/features/sign_up/data/repositories/sign_up_repositories.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  SignUpCubit() : super(SignUpInitial());
+  SignUpCubit(this.signUpRepo) : super(SignUpInitial());
+  SignUpRepo signUpRepo;
   GlobalKey<FormState> step1FormKey = GlobalKey();
   GlobalKey<FormState> step2FormKey = GlobalKey();
   GlobalKey<FormState> step3FormKey = GlobalKey();
@@ -25,5 +27,19 @@ class SignUpCubit extends Cubit<SignUpState> {
   decreaseStepperIndex() {
     currentStep--;
     emit(UpdateStepperIndexState());
+  }
+
+  checkEmail() async {
+    try {
+      emit(CheckEmailLoadingInitial());
+      final result =
+          await signUpRepo.checkEmail(email: emailTextEditingController.text);
+      result.fold(
+        (invaild) => emit(CheckEmailFailureInitial(errMessage: "invlid Email")),
+        (valid) => emit(CheckEmailSuccessInitial()),
+      );
+    } catch (e) {
+      emit(CheckEmailFailureInitial(errMessage: e.toString()));
+    }
   }
 }

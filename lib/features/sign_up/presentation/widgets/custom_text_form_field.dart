@@ -11,21 +11,24 @@ class CustomTextFormField extends StatelessWidget {
     this.lable,
     this.validate,
     this.isPassword = false,
-    this.icon,
-    this.suffixIconOnPressed, this.keyboardType, this.inputFormatters,
+    this.suffixIcon,
+    this.keyboardType,
+    this.inputFormatters,
+    this.onChanged,
   });
   final TextEditingController controller;
   final String? hint;
   final String? lable;
   final String? Function(String?)? validate;
   final bool isPassword;
-  final IconData? icon;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
-  final VoidCallback? suffixIconOnPressed;
+  final Widget? suffixIcon;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       inputFormatters: inputFormatters,
       controller: controller,
       cursorColor: AppColors.primary,
@@ -36,13 +39,8 @@ class CustomTextFormField extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
         hintText: hint,
         labelText: lable,
-        suffixIcon: IconButton(
-          onPressed: suffixIconOnPressed,
-          icon: Icon(
-            icon,
-            color: AppColors.primary,
-          ),
-        ),
+        border: const OutlineInputBorder(),
+        suffixIcon: suffixIcon,
       ),
     );
   }

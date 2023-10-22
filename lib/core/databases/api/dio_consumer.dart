@@ -149,7 +149,7 @@ class DioConsumer extends ApiConsumer {
 
       case DioExceptionType.cancel:
         throw CancelException(
-            ErrorModel(errorMessage: e.toString(), status: 500));
+            ErrorModel(errorMessage: e.toString(), status: 500,));
 
       case DioExceptionType.unknown:
         throw UnknownException(

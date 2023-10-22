@@ -12,6 +12,12 @@ void navigate({
   );
 }
 
+void popNavigate({
+  required BuildContext context,
+}) {
+  Navigator.pop(context);
+}
+
 void navigateReplacment({
   required BuildContext context,
   required String route,
