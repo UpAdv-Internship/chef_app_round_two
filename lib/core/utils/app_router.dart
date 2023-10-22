@@ -1,3 +1,4 @@
+import 'package:chef_app_round_two/features/sign_up/presentation/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/splash/presentation/screens/change_lang_screen.dart';
@@ -31,6 +32,9 @@ class AppRoutes {
 
       case Routes.changeLang:
         return MaterialPageRoute(builder: (_) => const ChangeLangScreen());
+
+      case Routes.signUp:
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
       default:
         return null;
