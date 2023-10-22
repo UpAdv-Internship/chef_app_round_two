@@ -1,3 +1,5 @@
+import 'package:chef_app_round_two/features/profile/screens/home_screen.dart';
+import 'package:chef_app_round_two/features/profile/screens/update_profile.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -24,6 +26,10 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.intitlRoute:
       // return MaterialPageRoute(builder: (_) =>  ());
+      case Routes.home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.updateProfileScreen:
+        return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
 
       default:
         return null;
