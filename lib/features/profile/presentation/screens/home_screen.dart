@@ -40,20 +40,20 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: 10.h),
                 //! Name & Email
                 state is GetDataLoadingState
-                ? CircularProgressIndicator()
-                : Column(
-                  children: [
-                    Text(
-                      homeCubit.chefModel!.name,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(height: 5.h),
-                    Text(
-                      homeCubit.chefModel!.email,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ],
-                ),
+                    ? const CircularProgressIndicator()
+                    : Column(
+                        children: [
+                          Text(
+                            homeCubit.chefModel!.name,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          SizedBox(height: 5.h),
+                          Text(
+                            homeCubit.chefModel!.email,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ],
+                      ),
                 //! List Tiles
                 Padding(
                   padding: const EdgeInsets.all(10),
