@@ -1,3 +1,4 @@
+import 'package:chef_app_round_two/core/Widgets/custom_loading_indecator.dart';
 import 'package:chef_app_round_two/core/utils/app_assets.dart';
 import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:chef_app_round_two/core/utils/app_router.dart';
@@ -44,7 +45,18 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: BlocConsumer<LoginCubit, LoginState>(
-                  listener: (context, state) {},
+                  listener: (context, state) {
+                    if (state is LoginSuccessState) {
+                    showToast(
+                        message: 'login successfully',
+                        toastStates: ToastStates.success);
+                    navigateReplacment(context: context, route: Routes.home);
+                  }
+                  if (state is LoginErrorState) {
+                    showToast(
+                        message: 'login faild', toastStates: ToastStates.error);
+                  }
+                  },
                   builder: (context, state) {
                     final loginCubit = BlocProvider.of<LoginCubit>(context);
                     return Form(
@@ -54,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           //!text field email
                           CustomLoginTextFormField(
-                              controller: loginCubit.loginController,
+                              controller: loginCubit.emailController,
                               hint: 'Email',
                               validate: (data) {
                               if (data!.isEmpty ||
@@ -107,8 +119,15 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(
                             height: 40.h,
                           ),
-                          CustomButton(
-                            onPressed: () {},
+                          //!sign in button
+                         state is LoginLoadingState
+                              ? const CustomLoadingIndicator()
+                              : CustomButton(
+                            onPressed: () {
+                              if(loginCubit.loginKey.currentState!.validate()){
+                                loginCubit.login();
+                              }
+                            },
                             text: 'sign in',
                           ),
                           SizedBox(
@@ -122,7 +141,9 @@ class LoginScreen extends StatelessWidget {
                               ),
                               TextButton(
                                   onPressed: () {
+                                    
                                     navigate(context: context, route: Routes.signUp);
+
                                   },
                                   child: Text(
                                     'Sign Up',

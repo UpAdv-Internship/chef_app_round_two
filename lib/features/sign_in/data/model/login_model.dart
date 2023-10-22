@@ -10,8 +10,8 @@ class LoginModel {
   });
   factory LoginModel.fromJson(Map<String, dynamic> jsonData) {
     return LoginModel(
-      message: Apikeys.message,
-      token: Apikeys.token,
+      message:jsonData[Apikeys.message] ,
+      token:jsonData[Apikeys.token] ,
     );
   }
 }
