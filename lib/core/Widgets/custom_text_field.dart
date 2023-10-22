@@ -2,7 +2,7 @@ import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
+   CustomTextFormField({
     super.key,
     required this.hint,
     required this.controller,
@@ -36,7 +36,7 @@ class CustomTextFormField extends StatelessWidget {
           },
       controller: controller,
       onChanged: onChanged,
-      cursorColor: AppColors.orange,
+      cursorColor: AppColors.primary,
       obscureText: isObscure,
       keyboardType: keyboardType,
       decoration: InputDecoration(

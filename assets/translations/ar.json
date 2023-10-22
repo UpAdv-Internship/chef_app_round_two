@@ -63,5 +63,6 @@
     "camera": "الكامير",
     "gallery": "المعرض",
     "next":"التالي",
-    "previous":"previous"
+    "previous":"previous",
+    "PleaseCheckYourPassword": "من فضلك تأكد من كلمة السر"
 }

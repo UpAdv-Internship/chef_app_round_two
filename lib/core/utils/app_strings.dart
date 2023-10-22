@@ -37,6 +37,7 @@ class AppStrings {
   static const String pleaseEnterValidCode = 'pleaseEnterValidCode';
   static const String passwordChangedSucessfully = 'PasswordChangedSucessfully';
   static const String pleaseEnterValidNumber = 'pleaseEnterValidNumber';
+  static const String PleaseCheckYourPassword = 'PleaseCheckYourPassword';
 
   //! home-order-menu
   static const String addDishToMenu = 'addDishToMenu';

@@ -4,12 +4,14 @@ import 'package:chef_app_round_two/features/sign_in/presentation/screen/login_sc
 import 'package:chef_app_round_two/features/sign_up/presentation/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/profile/presentation/screens/change_password_screen.dart';
 import '../../features/splash/presentation/screens/change_lang_screen.dart';
 import '../../features/splash/presentation/screens/splash_screen.dart';
 
 class Routes {
   static const String intitlRoute = '/';
   static const String changeLang = '/changeLang';
+  static const String changePassword = '/ChangePasswordScreen';
 
   static const String login = '/login';
 
@@ -45,6 +47,9 @@ class AppRoutes {
 
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
+
+      case Routes.changePassword:
+        return MaterialPageRoute(builder: (_) =>  ChangePasswordScreen());
 
       default:
         return null;

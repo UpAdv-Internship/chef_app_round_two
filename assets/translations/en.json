@@ -63,5 +63,6 @@
     "camera": "Camera",
     "gallery": "Gallery",
     "next":"Next",
-    "previous":"Previous"
+    "previous":"Previous",
+    "PleaseCheckYourPassword": "Please Check Your Password"
 }
