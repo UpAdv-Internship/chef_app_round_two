@@ -1,6 +1,5 @@
 import 'package:chef_app_round_two/core/databases/api/api_consumer.dart';
 import 'package:chef_app_round_two/core/databases/api/end_points.dart';
-import 'package:chef_app_round_two/core/databases/cache/cache_helper.dart';
 import 'package:chef_app_round_two/core/error/exception.dart';
 import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/features/profile/data/model/chef_data_model.dart';

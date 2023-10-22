@@ -1,17 +1,19 @@
-import 'dart:io';
 
-import 'package:chef_app_round_two/core/utils/app_assets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:chef_app_round_two/core/utils/app_router.dart';
 import 'package:chef_app_round_two/core/utils/commons.dart';
 import 'package:chef_app_round_two/features/profile/presentation/components/profile_text_field.dart';
 import 'package:chef_app_round_two/features/profile/presentation/components/show_toast.dart';
+import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/update_profile_cubit/update_profile_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shimmer/shimmer.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
   const UpdateProfileScreen({super.key});
@@ -53,21 +55,35 @@ class UpdateProfileScreen extends StatelessWidget {
                         child: Stack(
                           children: [
                             //* Image
-                            updateCubit.image != null
-                                ? CircleAvatar(
-                                    radius: 100,
-                                    backgroundImage: FileImage(
-                                        File(updateCubit.image!.path)),
-                                  )
-                                : const CircleAvatar(
-                                    radius: 75,
-                                    backgroundImage:
-                                        AssetImage(AppAssets.imagePicker),
-                                  ),
-
-                            //* Edit Button
                             Align(
-                              alignment: Alignment.bottomRight,
+                              alignment: Alignment.center,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(90),
+                                child: SizedBox(
+                                  width: 180.w,
+                                  height: 180.h,
+                                  child: CachedNetworkImage(
+                                    fit: BoxFit.fill,
+                                    imageUrl:
+                                        sl<HomeCubit>().chefModel!.profilePic,
+                                    placeholder: (context, url) =>
+                                        Shimmer.fromColors(
+                                      baseColor: AppColors.grey,
+                                      highlightColor: AppColors.white,
+                                      enabled: true,
+                                      child: const CircleAvatar(
+                                        radius: 85,
+                                        backgroundColor: AppColors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            //* Edit Button
+                            Positioned(
+                              bottom: 15.h,
+                              right: 15.w,
                               child: InkWell(
                                 child: const CircleAvatar(
                                   backgroundColor: AppColors.primary,
