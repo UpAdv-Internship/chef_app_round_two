@@ -23,8 +23,6 @@ void initServiceLocator() {
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));
   sl.registerLazySingleton(() => LoginCubit(sl()));
   sl.registerLazySingleton(() => SignUpCubit(sl()));
-  sl.registerLazySingleton(() => LoginCubit(sl()));
   sl.registerLazySingleton(() => SignUpRepo());
-  sl.registerLazySingleton(() => SignUpCubit(sl()));
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }
