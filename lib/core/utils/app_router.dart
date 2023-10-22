@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../features/screens/change_lang_screen.dart';
-import '../../features/screens/splash_screen.dart';
+import '../../features/splash/presentation/screens/change_lang_screen.dart';
+import '../../features/splash/presentation/screens/splash_screen.dart';
 
 class Routes {
   static const String intitlRoute = '/';
@@ -27,10 +27,10 @@ class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.intitlRoute:
-       return MaterialPageRoute(builder: (_) => const SplashScreen ());
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
 
       case Routes.changeLang:
-       return MaterialPageRoute(builder: (_) =>  ChangeLangScreen());
+        return MaterialPageRoute(builder: (_) => const ChangeLangScreen());
 
       default:
         return null;
