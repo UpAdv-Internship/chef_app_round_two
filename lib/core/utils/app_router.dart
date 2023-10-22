@@ -36,6 +36,9 @@ class AppRoutes {
       case Routes.changeLang:
         return MaterialPageRoute(builder: (_) => const ChangeLangScreen());
 
+      case Routes.login:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+
       case Routes.signUp:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
