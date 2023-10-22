@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
 
+import '../../features/splash/presentation/screens/change_lang_screen.dart';
+import '../../features/splash/presentation/screens/splash_screen.dart';
 
 class Routes {
   static const String intitlRoute = '/';
+  static const String changeLang = '/changeLang';
 
   static const String login = '/login';
 
@@ -20,34 +24,16 @@ class Routes {
 }
 
 class AppRoutes {
-  // static Route? generateRoute(RouteSettings routeSettings) {
-  //   switch (routeSettings.name) {
-  //     case Routes.intitlRoute:
-  //       return MaterialPageRoute(builder: (_) => const SplashScreen());
+  static Route? generateRoute(RouteSettings routeSettings) {
+    switch (routeSettings.name) {
+      case Routes.intitlRoute:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
 
-  //     case Routes.login:
-  //       return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case Routes.changeLang:
+        return MaterialPageRoute(builder: (_) => const ChangeLangScreen());
 
-  //     case Routes.signUp:
-  //       return MaterialPageRoute(builder: (_) => const SignUpScreen());
-  //     case Routes.home:
-  //       return MaterialPageRoute(builder: (_) => const HomeScreen());
-  //     case Routes.updateProfileScreen:
-  //       return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
-
-  //     case Routes.noInternetConnection:
-  //       return MaterialPageRoute(
-  //           builder: (_) => const NoInternetConnectionScreen());
-
-      // case Routes.signUpPersonalImage:
-      //     return MaterialPageRoute(builder: (_) => const signUpPersonalImageScreen());
-
-      // case Routes.signUpLocation:
-      //     return MaterialPageRoute(builder: (_) => const signUpLocationScreen());
-
-      // case Routes.signUpMoreInfo:
-      //     return MaterialPageRoute(builder: (_) => const signUpMoreInfoScreen());
-      // default:
-      //   return null;
+      default:
+        return null;
     }
- 
+  }
+}
