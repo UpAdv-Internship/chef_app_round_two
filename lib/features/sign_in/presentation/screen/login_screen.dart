@@ -74,6 +74,9 @@ class LoginScreen extends StatelessWidget {
                           //!text field password
                           CustomLoginTextFormField(
                               controller: loginCubit.passwordController,
+                              isPassword: loginCubit.isLoginPasswordsShowing,
+                              icon: loginCubit.suffixIcon,
+                              suffixIconOnPressed:(){loginCubit.changeLoginPasswordSuffixIcon();}  ,
                               hint: 'Password',validate: (data) {
                               if (data!.length < 6 || data.isEmpty) {
                                 return "The password that you've entered is incorrect"
