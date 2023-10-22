@@ -49,7 +49,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
       case Routes.changePassword:
-        return MaterialPageRoute(builder: (_) =>  ChangePasswordScreen());
+        return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
 
       default:
         return null;

@@ -7,9 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../features/profile/presentation/screens/change_password_screen.dart';
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override

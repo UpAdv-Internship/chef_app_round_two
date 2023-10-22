@@ -2,7 +2,7 @@ import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-   CustomTextFormField({
+  const CustomTextFormField({
     super.key,
     required this.hint,
     required this.controller,
@@ -11,7 +11,7 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.suffixIcon,
-    this.changeSuffix, 
+    this.changeSuffix,
     this.onChanged,
   });
   final String hint;
