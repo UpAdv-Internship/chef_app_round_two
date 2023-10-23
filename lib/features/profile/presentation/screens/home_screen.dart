@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chef_app_round_two/core/Widgets/custom_loading_indecator.dart';
+import 'package:chef_app_round_two/core/databases/api/end_points.dart';
+import 'package:chef_app_round_two/core/databases/cache/cache_helper.dart';
 import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/core/utils/app_assets.dart';
@@ -27,6 +29,7 @@ class HomeScreen extends StatelessWidget {
               navigateReplacment(context: context, route: Routes.login);
               showToast(
                   message: state.message, toastStates: ToastStates.success);
+                  sl<CacheHelper>().clearData(key: Apikeys.token);
             }
             if (state is LogoutErrorState) {
               showToast(message: state.message, toastStates: ToastStates.error);
@@ -117,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                               content: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  const Text(AppStrings.sureToLogout),
+                                  Text(AppStrings.sureToLogout.tr(context)),
                                   SizedBox(height: 20.h),
                                   state is LogoutLoadingState
                                       ? const CustomLoadingIndicator()
@@ -127,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                                               onPressed: () {
                                                 homeCubit.logout();
                                               },
-                                              child: const Text('Logout'),
+                                              child: Text(AppStrings.logout.tr(context)),
                                             ),
                                             SizedBox(width: 20.w),
                                             ElevatedButton(

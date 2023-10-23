@@ -1,6 +1,7 @@
 import 'package:chef_app_round_two/core/databases/api/end_points.dart';
 import 'package:chef_app_round_two/core/databases/cache/cache_helper.dart';
 import 'package:chef_app_round_two/core/services/service_locator.dart';
+import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:chef_app_round_two/features/sign_in/data/model/login_model.dart';
 import 'package:chef_app_round_two/features/sign_in/data/reposatory/login_repo.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_state.dart';
@@ -16,14 +17,13 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController passwordController = TextEditingController();
 //!passsword suffixIcon
   bool isLoginPasswordsShowing = true;
-  IconData suffixIcon = Icons.visibility_off ;
+  IconData suffixIcon = Icons.visibility_off;
   void changeLoginPasswordSuffixIcon() {
     isLoginPasswordsShowing = !isLoginPasswordsShowing;
     suffixIcon =
-        isLoginPasswordsShowing ?Icons.visibility_off   : Icons.visibility;
+        isLoginPasswordsShowing ? Icons.visibility_off : Icons.visibility;
     emit(ChangeLoginPasswordSuffixIcon());
   }
-
 
   LoginModel? loginModel;
   // login method
@@ -42,6 +42,7 @@ class LoginCubit extends Cubit<LoginState> {
         key: Apikeys.token,
         value: r.token,
       );
+      sl<HomeCubit>().getData();
       emit(LoginSuccessState());
     });
   }
