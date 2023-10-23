@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
         body: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {
             if (state is LogoutSuccesState) {
-              navigateReplacment(context: context, route: Routes.login);
+              // navigateReplacment(context: context, route: Routes.login);
               showToast(
                   message: state.message, toastStates: ToastStates.success);
                   sl<CacheHelper>().clearData(key: Apikeys.token);
@@ -128,7 +128,9 @@ class HomeScreen extends StatelessWidget {
                                           children: [
                                             ElevatedButton(
                                               onPressed: () {
-                                                homeCubit.logout();
+                                                homeCubit.logout().then((value) {
+                                                  navigateReplacment(context: context, route: Routes.login);
+                                                });
                                               },
                                               child: Text(AppStrings.logout.tr(context)),
                                             ),
@@ -137,7 +139,7 @@ class HomeScreen extends StatelessWidget {
                                               onPressed: () {
                                                 popNavigate(context: context);
                                               },
-                                              child: const Text('no'),
+                                              child:  Text(AppStrings.no.tr(context)),
                                             ),
                                           ],
                                         )
