@@ -7,6 +7,7 @@ import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/core/utils/commons.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_cubit.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_state.dart';
+
 import 'package:chef_app_round_two/features/sign_in/presentation/widgets/custom_button.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/widgets/custom_login_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -30,13 +31,14 @@ class LoginScreen extends StatelessWidget {
                     AppAssets.backgroundTwo,
                     width: double.infinity,
                     fit: BoxFit.fill,
+                    
                   ),
                   SizedBox(
                     height: 92.h,
                   ),
                   Center(
                       child: Text(
-                    'welcome back',
+                    AppStrings.welcomeBack.tr(context),
                     style: Theme.of(context).textTheme.displayLarge,
                   ))
                 ],
@@ -50,13 +52,13 @@ class LoginScreen extends StatelessWidget {
                   listener: (context, state) {
                     if (state is LoginSuccessState) {
                       showToast(
-                          message: 'login successfully',
+                          message: AppStrings.loginSucessfully,
                           toastStates: ToastStates.success);
                       navigateReplacment(context: context, route: Routes.home);
                     }
                     if (state is LoginErrorState) {
                       showToast(
-                          message: 'login faild',
+                          message: AppStrings.loginFailed,
                           toastStates: ToastStates.error);
                     }
                   },
@@ -69,12 +71,13 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           //!text field email
                           CustomLoginTextFormField(
+                            lable: AppStrings.email.tr(context),
                             controller: loginCubit.emailController,
                             hint: AppStrings.email.tr(context),
                             validate: (data) {
                               if (data!.isEmpty ||
                                   !data.contains('@gmail.com')) {
-                                return "The email address you entered isn't connected to an account";
+                                return AppStrings.pleaseEnterValidEmail.tr(context);
                               }
 
                               return null;
@@ -86,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           //!text field password
                           CustomLoginTextFormField(
+                            lable: AppStrings.password.tr(context),
                             controller: loginCubit.passwordController,
                             isPassword: loginCubit.isLoginPasswordsShowing,
                             icon: loginCubit.suffixIcon,
@@ -95,7 +99,7 @@ class LoginScreen extends StatelessWidget {
                             hint: AppStrings.password.tr(context),
                             validate: (data) {
                               if (data!.length < 6 || data.isEmpty) {
-                                return "The password that you've entered is incorrect";
+                                return AppStrings.pleaseEnterValidPassword.tr(context);
                               }
 
                               return null;
@@ -108,9 +112,11 @@ class LoginScreen extends StatelessWidget {
                           Row(
                             children: [
                               TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    navigateReplacment(context: context, route: Routes.forgetPasswordScreen);
+                                  },
                                   child: Text(
-                                    'forget passwrd ?',
+                                    AppStrings.forgetPassword.tr(context),
                                     style: Theme.of(context)
                                         .textTheme
                                         .displayMedium!
@@ -141,8 +147,8 @@ class LoginScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
-                                'Don’t have an account?',
+                               Text(
+                                AppStrings.dontHaveAnAccount.tr(context),
                               ),
                               TextButton(
                                   onPressed: () {
@@ -150,7 +156,7 @@ class LoginScreen extends StatelessWidget {
                                         context: context, route: Routes.signUp);
                                   },
                                   child: Text(
-                                    'Sign Up',
+                                    AppStrings.signUp.tr(context),
                                     style: Theme.of(context)
                                         .textTheme
                                         .displayMedium!

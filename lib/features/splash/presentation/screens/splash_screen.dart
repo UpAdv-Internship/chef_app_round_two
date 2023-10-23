@@ -47,10 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
             const SizedBox(height: 16),
             Text(
               AppStrings.chefApp.tr(context),
-              style: GoogleFonts.lato(
-                  color: AppColors.black,
-                  fontSize: 36,
-                  fontWeight: FontWeight.w700),
+              style: Theme.of(context).textTheme.displayLarge,
             )
           ],
         ),
