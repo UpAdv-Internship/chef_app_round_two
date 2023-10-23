@@ -7,6 +7,7 @@ import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/core/utils/commons.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_cubit.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/cubit/login_state.dart';
+
 import 'package:chef_app_round_two/features/sign_in/presentation/widgets/custom_button.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/widgets/custom_login_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class LoginScreen extends StatelessWidget {
                     AppAssets.backgroundTwo,
                     width: double.infinity,
                     fit: BoxFit.fill,
+                    
                   ),
                   SizedBox(
                     height: 92.h,
@@ -108,7 +110,9 @@ class LoginScreen extends StatelessWidget {
                           Row(
                             children: [
                               TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    navigateReplacment(context: context, route: Routes.forgetPasswordScreen);
+                                  },
                                   child: Text(
                                     AppStrings.forgetPassword.tr(context),
                                     style: Theme.of(context)

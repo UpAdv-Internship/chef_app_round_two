@@ -59,7 +59,7 @@
     "pleaseEnterValidMealPhoto": "من فضلك أدخل صورة وجبة ",
     "checkMail": "راجع البريد الالكتروني",
     "pleaseEnterValidCode": "من فضلك أدخل كود صحيح",
-    "passwordChangedSucessfully": "تم تغير كلمة السر",
+    "passwordChangedSucessfully": "تم تغير كلمة السر بنجاح",
     "pleaseEnterValidNumber": "من فضلك أدخل رقم صحيح",
     "camera": "الكامير",
     "gallery": "المعرض",
@@ -77,5 +77,7 @@
     "location":"اضغط علي الايقونه لتحديد الموقع",
     "enterYourCurrentlocationLocation":"ادخل عنوانك بالتفصيل",
     "minCharge":"الحد الادني لقبول الطلبات",
-    "pleaseEnterValidMinCharge":"من فضلك ادخل الحد الادني لقبول الطلبات"
+    "pleaseEnterValidMinCharge":"من فضلك ادخل الحد الادني لقبول الطلبات",
+    "thisEmailNotValid":"هذا البريد الإلكتروني غير صالح"
+    
 }

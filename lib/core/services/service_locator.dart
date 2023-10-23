@@ -5,7 +5,9 @@ import 'package:chef_app_round_two/features/profile/data/repository/profile_repo
 import 'package:chef_app_round_two/features/profile/data/repository/update_password_repository.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
+import 'package:chef_app_round_two/features/sign_in/data/reposatory/forget_password_repo.dart';
 import 'package:chef_app_round_two/features/sign_in/data/reposatory/login_repo.dart';
+import 'package:chef_app_round_two/features/sign_in/presentation/forget_password_cubit/cubit/forget_password_cubit.dart';
 import 'package:chef_app_round_two/features/sign_up/data/repositories/sign_up_repositories.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:chef_app_round_two/features/splash/presentation/cubit/global_cubit.dart';
@@ -32,4 +34,6 @@ void initServiceLocator() {
   sl.registerLazySingleton(() => GlobalCubit());
   sl.registerLazySingleton(() => SignUpRepo());
   sl.registerLazySingleton(() => InternetConnectionChecker());
+  sl.registerLazySingleton(() => ForgetPasswordCubit(sl()));
+  sl.registerLazySingleton(() => ForgetPasswordRepo());
 }

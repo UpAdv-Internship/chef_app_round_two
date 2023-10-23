@@ -34,10 +34,13 @@ class AppStrings {
   static const String le = 'le';
   static const String dontHaveAnAccount = 'dontHaveAnAccount';
   static const String checkMail = 'checkMail';
+  static const String thisEmailNotValid = 'thisEmailNotValid';
   static const String pleaseEnterValidCode = 'pleaseEnterValidCode';
-  static const String passwordChangedSucessfully = 'PasswordChangedSucessfully';
+  static const String passwordChangedSucessfully = 'passwordChangedSucessfully';
   static const String pleaseEnterValidNumber = 'pleaseEnterValidNumber';
   static const String pleaseCheckYourPassword = 'PleaseCheckYourPassword';
+
+  
 
   //! home-order-menu
   static const String addDishToMenu = 'addDishToMenu';

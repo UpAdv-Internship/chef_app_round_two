@@ -1,6 +1,8 @@
 import 'package:chef_app_round_two/features/profile/presentation/screens/home_screen.dart';
 import 'package:chef_app_round_two/features/profile/presentation/screens/update_profile.dart';
+import 'package:chef_app_round_two/features/sign_in/presentation/screen/forget_password_andsendcode_screen.dart';
 import 'package:chef_app_round_two/features/sign_in/presentation/screen/login_screen.dart';
+import 'package:chef_app_round_two/features/sign_in/presentation/screen/reset_password_screen.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +29,8 @@ class Routes {
 
   static const String signUpMoreInfo = '/signUpMoreInfo';
   static const String noInternetConnection = '/noInternetConnection';
+  static const String forgetPasswordScreen = '/ForgetPasswordScreen';
+  static const String resetPasswordScreen = '/ResetPasswordScreen';
 }
 
 class AppRoutes {
@@ -36,6 +40,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.resetPasswordScreen:
+        return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
+      case Routes.forgetPasswordScreen:
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
       case Routes.updateProfileScreen:
         return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
 

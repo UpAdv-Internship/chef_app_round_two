@@ -34,6 +34,7 @@ class EndPoint {
 
 class Apikeys {
   static const String email = 'email';
+  static const String status = 'status';
   static const String id = 'id';
   static const String password = 'password';
   static const String confirmPassword = 'confirmPassword';
