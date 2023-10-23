@@ -53,8 +53,8 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
     final res = await profileRepo.updateProfile(
       name: nameController.text,
       phone: phoneController.text,
-      // location: locationController.text,
-      location: currentPosition.toString(),
+      location: locationController.text,
+      // location: currentPosition.toString(),
       brandName: brandNameController.text,
       minCharge: minChargeController.text,
       disc: discController.text,
