@@ -1,4 +1,3 @@
-
 import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:chef_app_round_two/core/utils/app_strings.dart';
@@ -84,9 +83,7 @@ class RequierdBackIDFileItem extends StatelessWidget {
                 );
               },
               icon: Icon(
-                signupCubit.healthCertificate != null
-                    ? Icons.done
-                    : Icons.camera,
+                signupCubit.backId != null ? Icons.done : Icons.camera,
                 color: AppColors.primary,
               ),
             )

@@ -85,7 +85,9 @@ class RequierdhealthCertificateFileItem extends StatelessWidget {
                 );
               },
               icon: Icon(
-                signupCubit.backId != null ? Icons.done : Icons.camera,
+                signupCubit.healthCertificate != null
+                    ? Icons.done
+                    : Icons.camera,
                 color: AppColors.primary,
               ),
             )
