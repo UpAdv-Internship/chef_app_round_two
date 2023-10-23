@@ -28,87 +28,89 @@ class ChangeLangScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(24),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 116,
-                  ),
-                  Image.asset(
-                    AppAssets.appLogo,
-                    width: 140,
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    AppStrings.welcomeToChefApp.tr(context),
-                    style: GoogleFonts.lato(
-                        fontSize: 36,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.black), //latoStyle36
-                  ),
-                  const SizedBox(height: 54),
-                  Text(
-                    AppStrings.pleaseChooseYourLanguage.tr(context),
-                    style: GoogleFonts.lato(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.black), //24
-                  ),
-                  const SizedBox(
-                    height: 120,
-                  ),
-                  BlocBuilder<GlobalCubit, GlobalState>(
-                      builder: (context, state) {
-                    return Row(
-                      children: [
-                        SizedBox(
-                          height: 48,
-                          width: 140,
-                          child: ElevatedButton(
-                              onPressed: () {
-                                BlocProvider.of<GlobalCubit>(context)
-                                    .changeLang('en');
-                                navigate(context: context, route: Routes.login);
-                              },
-                              style: Theme.of(context)
-                                  .elevatedButtonTheme
-                                  .style!
-                                  .copyWith(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        AppColors.black),
-                                  ),
-                              child: const Text(
-                                'English',
-                                style: TextStyle(
-                                    fontSize: 24, color: AppColors.white),
-                              )),
-                        ),
-                        const Spacer(),
-                        SizedBox(
-                          height: 48,
-                          width: 140,
-                          child: ElevatedButton(
-                              onPressed: () {
-                                BlocProvider.of<GlobalCubit>(context)
-                                    .changeLang('ar');
-                                navigate(context: context, route: Routes.login);
-                              },
-                              style: Theme.of(context)
-                                  .elevatedButtonTheme
-                                  .style!
-                                  .copyWith(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        AppColors.black),
-                                  ),
-                              child: const Text(
-                                'العربية',
-                                style: TextStyle(
-                                    fontSize: 24, color: AppColors.white),
-                              )),
-                        ),
-                      ],
-                    );
-                  })
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 116,
+                    ),
+                    Image.asset(
+                      AppAssets.appLogo,
+                      width: 140,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      AppStrings.welcomeToChefApp.tr(context),
+                      style: GoogleFonts.lato(
+                          fontSize: 36,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.black), //latoStyle36
+                    ),
+                    const SizedBox(height: 54),
+                    Text(
+                      AppStrings.pleaseChooseYourLanguage.tr(context),
+                      style: GoogleFonts.lato(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.black), //24
+                    ),
+                    const SizedBox(
+                      height: 120,
+                    ),
+                    BlocBuilder<GlobalCubit, GlobalState>(
+                        builder: (context, state) {
+                      return Row(
+                        children: [
+                          SizedBox(
+                            height: 48,
+                            width: 140,
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  BlocProvider.of<GlobalCubit>(context)
+                                      .changeLang('en');
+                                  navigate(context: context, route: Routes.login);
+                                },
+                                style: Theme.of(context)
+                                    .elevatedButtonTheme
+                                    .style!
+                                    .copyWith(
+                                      backgroundColor: MaterialStateProperty.all(
+                                          AppColors.black),
+                                    ),
+                                child: const Text(
+                                  'English',
+                                  style: TextStyle(
+                                      fontSize: 24, color: AppColors.white),
+                                )),
+                          ),
+                          const Spacer(),
+                          SizedBox(
+                            height: 48,
+                            width: 140,
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  BlocProvider.of<GlobalCubit>(context)
+                                      .changeLang('ar');
+                                  navigate(context: context, route: Routes.login);
+                                },
+                                style: Theme.of(context)
+                                    .elevatedButtonTheme
+                                    .style!
+                                    .copyWith(
+                                      backgroundColor: MaterialStateProperty.all(
+                                          AppColors.black),
+                                    ),
+                                child: const Text(
+                                  'العربية',
+                                  style: TextStyle(
+                                      fontSize: 24, color: AppColors.white),
+                                )),
+                          ),
+                        ],
+                      );
+                    })
+                  ],
+                ),
               ),
             )
           ],

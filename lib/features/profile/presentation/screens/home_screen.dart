@@ -11,6 +11,7 @@ import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cub
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -51,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(90),
                             child: SizedBox(
                               width: 180,
-                              height: 180,
+                              height: 180,                              
                               child: CachedNetworkImage(
                                 fit: BoxFit.fill,
                                 imageUrl: sl<HomeCubit>().chefModel!.profilePic,
@@ -136,7 +137,8 @@ class HomeScreen extends StatelessWidget {
                                               child: const Text('no'),
                                             ),
                                           ],
-                                        ),
+                                        )
+                                      
                                 ],
                               ),
                             ),

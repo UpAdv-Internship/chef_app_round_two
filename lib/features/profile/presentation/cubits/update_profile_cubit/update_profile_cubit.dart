@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/features/profile/data/repository/profile_repo.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_cubit.dart';
@@ -10,15 +12,16 @@ import 'package:image_picker/image_picker.dart';
 class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   UpdateProfileCubit(this.profileRepo) : super(UpdateProfileInitial());
 
-  TextEditingController nameController = TextEditingController();  
+  TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController brandNameController = TextEditingController();
   TextEditingController minChargeController = TextEditingController();
   TextEditingController discController = TextEditingController();
   GlobalKey<FormState> updateProfileKey = GlobalKey<FormState>();
+  // XFile image = XFile(sl<HomeCubit>().profileImage!.path);
   XFile? image;
-    
+
   //! Image Picker
   void takePhoto(value) {
     image = value;
@@ -52,6 +55,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
       brandName: brandNameController.text,
       minCharge: minChargeController.text,
       disc: discController.text,
+      // image: await uploadImagetoApi(XFile(sl<HomeCubit>().profileImage!.path)),
       image: image!,
     );
     res.fold(

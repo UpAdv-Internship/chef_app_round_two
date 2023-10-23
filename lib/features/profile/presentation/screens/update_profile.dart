@@ -46,6 +46,18 @@ class UpdateProfileScreen extends StatelessWidget {
                 builder: (context, state) {
                   final updateCubit =
                       BlocProvider.of<UpdateProfileCubit>(context);
+                  updateCubit.nameController.text =
+                      sl<HomeCubit>().chefModel!.name;
+                  updateCubit.phoneController.text =
+                      sl<HomeCubit>().chefModel!.phone;
+                  updateCubit.locationController.text =
+                      "${sl<HomeCubit>().chefModel!.location['type']} ${sl<HomeCubit>().chefModel!.location['coordinates']}";
+                  updateCubit.brandNameController.text =
+                      sl<HomeCubit>().chefModel!.brandName;
+                  updateCubit.minChargeController.text =
+                      '${sl<HomeCubit>().chefModel!.minCharge}';
+                  updateCubit.discController.text =
+                      sl<HomeCubit>().chefModel!.disc;
                   return Column(
                     children: [
                       //! Image Picker
@@ -55,39 +67,45 @@ class UpdateProfileScreen extends StatelessWidget {
                         child: Stack(
                           children: [
                             //* Image
-                            Align(
-                              alignment: Alignment.center,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(90),
-                                child: Container(
-                                  padding: const EdgeInsets.all(0),
-                                  width: 180,
-                                  height: 180,
-                                  child: sl<UpdateProfileCubit>().image == null
-                                  ? CachedNetworkImage(
-                                    fit: BoxFit.fill,
-                                    imageUrl:
-                                        sl<HomeCubit>().chefModel!.profilePic,
-                                        
-                                        // ? sl<HomeCubit>().chefModel!.profilePic
-                                        // : sl<UpdateProfileCubit>().image!.path,
-                                    placeholder: (context, url) =>
-                                        Shimmer.fromColors(
-                                      baseColor: AppColors.grey,
-                                      highlightColor: AppColors.white,
-                                      enabled: true,
-                                      child: const CircleAvatar(
-                                        radius: 85,
-                                        backgroundColor: AppColors.grey,
-                                      ),
-                                    ),
-                                  )
-                                  : Image.file(File(sl<UpdateProfileCubit>().image!.path), fit: BoxFit.fill,)
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(90),
+                                    child: Container(
+                                        padding: const EdgeInsets.all(0),
+                                        width: 180,
+                                        height: 180,
+                                        child: sl<UpdateProfileCubit>().image ==
+                                                null
+                                            ? CachedNetworkImage(
+                                                fit: BoxFit.fill,
+                                                imageUrl: sl<HomeCubit>()
+                                                    .chefModel!
+                                                    .profilePic,
+
+                                                // ? sl<HomeCubit>().chefModel!.profilePic
+                                                // : sl<UpdateProfileCubit>().image!.path,
+                                                placeholder: (context, url) =>
+                                                    Shimmer.fromColors(
+                                                  baseColor: AppColors.grey,
+                                                  highlightColor: AppColors.white,
+                                                  enabled: true,
+                                                  child: const CircleAvatar(
+                                                    radius: 85,
+                                                    backgroundColor: AppColors.grey,
+                                                  ),
+                                                ),
+                                              )
+                                            : Image.file(
+                                                File(sl<UpdateProfileCubit>()
+                                                    .image!
+                                                    .path),
+                                                fit: BoxFit.fill,
+                                              )),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            //* Edit Button
-                            Positioned(
+                                //* Edit Button
+                                Positioned(
                               bottom: 15.h,
                               right: 15.w,
                               child: InkWell(
