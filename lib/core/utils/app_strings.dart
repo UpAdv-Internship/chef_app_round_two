@@ -62,7 +62,12 @@ class AppStrings {
   static const String deleteDish = 'deleteDish';
   static const String category = 'category';
   static const String noMeals = 'noMeals';
+  static const String sureToLogout = 'sureToLogout';
+  static const String enterYourName = 'enterYourName';
+  static const String enterPhoneNumber = 'enterPhoneNumber';
+  static const String save = 'save';
 
+  
   //!setting
   static const String editProfile = 'editProfile';
   static const String payment = 'payment';

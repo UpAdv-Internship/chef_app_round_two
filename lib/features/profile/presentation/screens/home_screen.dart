@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chef_app_round_two/core/Widgets/custom_loading_indecator.dart';
+import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/core/utils/app_assets.dart';
 import 'package:chef_app_round_two/core/utils/app_router.dart';
+import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/core/utils/commons.dart';
 import 'package:chef_app_round_two/features/profile/presentation/components/custom_list_tile.dart';
 import 'package:chef_app_round_two/features/profile/presentation/components/shimmers.dart';
@@ -11,7 +13,6 @@ import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cub
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(90),
                             child: SizedBox(
                               width: 180,
-                              height: 180,                              
+                              height: 180,
                               child: CachedNetworkImage(
                                 fit: BoxFit.fill,
                                 imageUrl: sl<HomeCubit>().chefModel!.profilePic,
@@ -83,7 +84,6 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 25.h),
-
                 //! List Tiles
                 Padding(
                   padding: const EdgeInsets.all(10),
@@ -91,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       //* Update profile
                       CustomListTile(
-                        title: 'Update Profile',
+                        title: AppStrings.editProfile.tr(context),
                         onTap: () {
                           navigate(
                             context: context,
@@ -101,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       //* Change password
                       CustomListTile(
-                        title: 'Change Password',
+                        title: AppStrings.changePassword.tr(context),
                         onTap: () {
                           navigate(
                               context: context, route: Routes.changePassword);
@@ -109,7 +109,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       //* Logout
                       CustomListTile(
-                        title: 'Logout',
+                        title: AppStrings.logout.tr(context),
                         onTap: () {
                           showDialog(
                             context: context,
@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                               content: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  const Text('Are You Sure You Want to Logout'),
+                                  const Text(AppStrings.sureToLogout),
                                   SizedBox(height: 20.h),
                                   state is LogoutLoadingState
                                       ? const CustomLoadingIndicator()
@@ -138,7 +138,6 @@ class HomeScreen extends StatelessWidget {
                                             ),
                                           ],
                                         )
-                                      
                                 ],
                               ),
                             ),

@@ -21,3 +21,5 @@ final class LogoutErrorState extends HomeState {
 
   LogoutErrorState({required this.message});
 }
+
+

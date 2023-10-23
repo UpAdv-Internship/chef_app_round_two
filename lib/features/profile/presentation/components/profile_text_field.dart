@@ -8,16 +8,21 @@ class ProfileTextFormField extends StatelessWidget {
     required this.label,
     required this.hint,
     required this.keyboardType,
-    this.validator,
+    this.validator,  
+    this.readOnly = false, 
+    this.suffixIcon,
   });
   final TextEditingController controller;
   final String label;
   final String hint;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
+  final bool readOnly;
+  final Widget? suffixIcon;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly,
       validator: validator ??
           (value) {
             if (value!.isEmpty) {
@@ -33,6 +38,7 @@ class ProfileTextFormField extends StatelessWidget {
         labelStyle: const TextStyle(color: AppColors.grey),
         hintText: hint,
         hintStyle: const TextStyle(color: AppColors.grey),
+        suffixIcon: suffixIcon,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
           borderSide: const BorderSide(

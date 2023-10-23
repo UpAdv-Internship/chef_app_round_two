@@ -76,5 +76,9 @@
     "location":"اضغط علي الايقونه لتحديد الموقع",
     "enterYourCurrentlocationLocation":"ادخل عنوانك بالتفصيل",
     "minCharge":"الحد الادني لقبول الطلبات",
-    "pleaseEnterValidMinCharge":"من فضلك ادخل الحد الادني لقبول الطلبات"
+    "pleaseEnterValidMinCharge":"من فضلك ادخل الحد الادني لقبول الطلبات",
+    "sureToLogout":"متأكد من تسجيل الخروج",
+    "enterYourName": "ادخل اسمك",
+    "enterPhoneNumber": "ادخل رقم هاتفك", 
+    "save": "حفظ"
 }

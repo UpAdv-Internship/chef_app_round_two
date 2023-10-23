@@ -1,14 +1,17 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:chef_app_round_two/core/utils/app_router.dart';
+import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/core/utils/commons.dart';
 import 'package:chef_app_round_two/features/profile/presentation/components/profile_text_field.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/update_profile_cubit/update_profile_state.dart';
+import 'package:chef_app_round_two/features/sign_up/presentation/widgets/custom_spiner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +26,7 @@ class UpdateProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Update Profile'),
+          title: Text(AppStrings.editProfile.tr(context)),
           backgroundColor: AppColors.primary,
         ),
         body: SingleChildScrollView(
@@ -51,7 +54,7 @@ class UpdateProfileScreen extends StatelessWidget {
                   updateCubit.phoneController.text =
                       sl<HomeCubit>().chefModel!.phone;
                   updateCubit.locationController.text =
-                      "${sl<HomeCubit>().chefModel!.location['type']} ${sl<HomeCubit>().chefModel!.location['coordinates']}";
+                      updateCubit.currentPosition.toString();
                   updateCubit.brandNameController.text =
                       sl<HomeCubit>().chefModel!.brandName;
                   updateCubit.minChargeController.text =
@@ -67,45 +70,45 @@ class UpdateProfileScreen extends StatelessWidget {
                         child: Stack(
                           children: [
                             //* Image
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(90),
-                                    child: Container(
-                                        padding: const EdgeInsets.all(0),
-                                        width: 180,
-                                        height: 180,
-                                        child: sl<UpdateProfileCubit>().image ==
-                                                null
-                                            ? CachedNetworkImage(
-                                                fit: BoxFit.fill,
-                                                imageUrl: sl<HomeCubit>()
-                                                    .chefModel!
-                                                    .profilePic,
+                            Align(
+                              alignment: Alignment.center,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(90),
+                                child: Container(
+                                    padding: const EdgeInsets.all(0),
+                                    width: 180,
+                                    height: 180,
+                                    child: sl<UpdateProfileCubit>().image ==
+                                            null
+                                        ? CachedNetworkImage(
+                                            fit: BoxFit.fill,
+                                            imageUrl: sl<HomeCubit>()
+                                                .chefModel!
+                                                .profilePic,
 
-                                                // ? sl<HomeCubit>().chefModel!.profilePic
-                                                // : sl<UpdateProfileCubit>().image!.path,
-                                                placeholder: (context, url) =>
-                                                    Shimmer.fromColors(
-                                                  baseColor: AppColors.grey,
-                                                  highlightColor: AppColors.white,
-                                                  enabled: true,
-                                                  child: const CircleAvatar(
-                                                    radius: 85,
-                                                    backgroundColor: AppColors.grey,
-                                                  ),
-                                                ),
-                                              )
-                                            : Image.file(
-                                                File(sl<UpdateProfileCubit>()
-                                                    .image!
-                                                    .path),
-                                                fit: BoxFit.fill,
-                                              )),
-                                  ),
-                                ),
-                                //* Edit Button
-                                Positioned(
+                                            // ? sl<HomeCubit>().chefModel!.profilePic
+                                            // : sl<UpdateProfileCubit>().image!.path,
+                                            placeholder: (context, url) =>
+                                                Shimmer.fromColors(
+                                              baseColor: AppColors.grey,
+                                              highlightColor: AppColors.white,
+                                              enabled: true,
+                                              child: const CircleAvatar(
+                                                radius: 85,
+                                                backgroundColor: AppColors.grey,
+                                              ),
+                                            ),
+                                          )
+                                        : Image.file(
+                                            File(sl<UpdateProfileCubit>()
+                                                .image!
+                                                .path),
+                                            fit: BoxFit.fill,
+                                          )),
+                              ),
+                            ),
+                            //* Edit Button
+                            Positioned(
                               bottom: 15.h,
                               right: 15.w,
                               child: InkWell(
@@ -131,7 +134,8 @@ class UpdateProfileScreen extends StatelessWidget {
                                                 Icons.camera,
                                                 color: AppColors.white,
                                               ),
-                                              title: const Text('Camera'),
+                                              title: Text(AppStrings.camera
+                                                  .tr(context)),
                                               titleTextStyle: const TextStyle(
                                                 color: AppColors.white,
                                                 fontSize: 20,
@@ -150,7 +154,8 @@ class UpdateProfileScreen extends StatelessWidget {
                                             ListTile(
                                               leading: const Icon(Icons.photo,
                                                   color: AppColors.white),
-                                              title: const Text('Gallery'),
+                                              title: Text(AppStrings.gallery
+                                                  .tr(context)),
                                               titleTextStyle: const TextStyle(
                                                 color: AppColors.white,
                                                 fontSize: 20,
@@ -186,8 +191,8 @@ class UpdateProfileScreen extends StatelessWidget {
                             //* Name TextField
                             ProfileTextFormField(
                               controller: updateCubit.nameController,
-                              label: 'Name',
-                              hint: 'Enter Your Name',
+                              label: AppStrings.name.tr(context),
+                              hint: AppStrings.enterYourName.tr(context),
                               keyboardType: TextInputType.name,
                               validator: (value) {
                                 if (value!.isEmpty) {
@@ -200,15 +205,17 @@ class UpdateProfileScreen extends StatelessWidget {
                             //* Phone TextField
                             ProfileTextFormField(
                               controller: updateCubit.phoneController,
-                              label: 'Phone Number',
-                              hint: 'Enter Your Phone Number',
+                              label: AppStrings.phoneNumber.tr(context),
+                              hint: AppStrings.enterPhoneNumber.tr(context),
                               keyboardType: TextInputType.number,
                               validator: (value) {
                                 if (value!.length != 11) {
-                                  return 'Lenght must be 11';
+                                  return AppStrings.pleaseEnterValidNumber
+                                      .tr(context);
                                 }
                                 if (value.isEmpty) {
-                                  return 'Cannot be empty!';
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
                                 }
                                 return null;
                               },
@@ -217,26 +224,58 @@ class UpdateProfileScreen extends StatelessWidget {
                             //* Location TextField
                             ProfileTextFormField(
                               controller: updateCubit.locationController,
-                              label: 'Location',
-                              hint: 'Enter Your Location',
+                              label: AppStrings.location.tr(context),
+                              hint: updateCubit.currentAddress ??
+                                  AppStrings.location.tr(context),
                               keyboardType: TextInputType.streetAddress,
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Cannot be empty!';
+                                if (updateCubit.location == null) {
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
+                                } else {
+                                  return null;
                                 }
-                                return null;
                               },
+                              readOnly: true,
+                              suffixIcon: state is GetAddressLoadingState
+                                  ? const CustomSpiner()
+                                  : state is GetAddressSuccessState
+                                      ? const Icon(Icons.done,
+                                          color: AppColors.primary)
+                                      : state is GetAddressFailureState
+                                          ? const Icon(
+                                              Icons.error,
+                                              color: AppColors.red,
+                                            )
+                                          : IconButton(
+                                              icon: const Icon(Icons.map,
+                                                  color: AppColors.primary),
+                                              onPressed: () async {
+                                                updateCubit.currentPosition =
+                                                    await updateCubit
+                                                        .getPosition();
+
+                                                updateCubit.getAdress(
+                                                    updateCubit.currentPosition!
+                                                        .latitude,
+                                                    updateCubit.currentPosition!
+                                                        .longitude);
+                                              },
+                                            ),
                             ),
+
                             SizedBox(height: 15.h),
                             //* Brand Name TextField
                             ProfileTextFormField(
                               controller: updateCubit.brandNameController,
-                              label: 'Brand Name',
-                              hint: 'Enter Your Brand Name',
+                              label: AppStrings.brandName.tr(context),
+                              hint: AppStrings.pleaseEnterValidBrandName
+                                  .tr(context),
                               keyboardType: TextInputType.name,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Cannot be empty!';
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
                                 }
                                 return null;
                               },
@@ -245,12 +284,14 @@ class UpdateProfileScreen extends StatelessWidget {
                             //* Minimun Charge TextField
                             ProfileTextFormField(
                               controller: updateCubit.minChargeController,
-                              label: 'Minimum Charge',
-                              hint: 'Enter Minimum Charge',
+                              label: AppStrings.minCharge.tr(context),
+                              hint: AppStrings.pleaseEnterValidMinCharge
+                                  .tr(context),
                               keyboardType: TextInputType.number,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Cannot be empty!';
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
                                 }
                                 return null;
                               },
@@ -259,15 +300,18 @@ class UpdateProfileScreen extends StatelessWidget {
                             //* Discreption TextField
                             ProfileTextFormField(
                               controller: updateCubit.discController,
-                              label: 'Discreption',
-                              hint: 'Enter Discreption',
+                              label: AppStrings.description.tr(context),
+                              hint: AppStrings.pleaseEnterValidDesc.tr(context),
                               keyboardType: TextInputType.text,
                               validator: (value) {
                                 if (value!.length <= 20) {
-                                  return 'Lenght must be at least 20 character';
+                                  return AppStrings
+                                      .pleaseEnterValidChargeAtLeastTwentyChar
+                                      .tr(context);
                                 }
                                 if (value.isEmpty) {
-                                  return 'Cannot be empty!';
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
                                 }
                                 return null;
                               },
@@ -293,7 +337,7 @@ class UpdateProfileScreen extends StatelessWidget {
                                       fixedSize:
                                           const Size(double.maxFinite, 50),
                                     ),
-                                    child: const Text('Save'),
+                                    child: Text(AppStrings.save.tr(context)),
                                   ),
                           ],
                         ),

@@ -1,12 +1,14 @@
-import 'dart:io';
 
 import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/features/profile/data/repository/profile_repo.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/update_profile_cubit/update_profile_state.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UpdateProfileCubit extends Cubit<UpdateProfileState> {
@@ -51,7 +53,8 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
     final res = await profileRepo.updateProfile(
       name: nameController.text,
       phone: phoneController.text,
-      location: locationController.text,
+      // location: locationController.text,
+      location: currentPosition.toString(),
       brandName: brandNameController.text,
       minCharge: minChargeController.text,
       disc: discController.text,
@@ -66,6 +69,54 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
       },
     );
   }
-  //! Change Password
-  //! Logout
+  
+  
+  //! Location
+  Position? currentPosition;
+  String? currentAddress;
+  Map? location;
+
+  Future<Position> getPosition() async {
+    LocationPermission permission;
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+
+      if (permission == LocationPermission.deniedForever) {
+        return Future.error('Location not available !');
+      }
+    } else {
+      if (kDebugMode) {
+        print('Location not available !');
+      }
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+  
+  void getAdress(latitude, longitude) async {
+    try {
+      emit(GetAddressLoadingState());
+      List<Placemark> placemark = await GeocodingPlatform.instance
+          .placemarkFromCoordinates(latitude, longitude);
+
+      Placemark place = placemark[0];
+
+      currentAddress = '${place.country},${place.locality},${place.street},';
+
+      location = {
+        "name": place.country ?? "Unknown",
+        "address": place.locality ?? "Unknown",
+        "coordinates": [latitude, longitude]
+      };
+      emit(GetAddressSuccessState());
+    } catch (e) {
+      if (kDebugMode) {
+        emit(GetAddressFailureState(errMessage: e.toString()));
+        print(e);
+      }
+    }
+  }
 }
+

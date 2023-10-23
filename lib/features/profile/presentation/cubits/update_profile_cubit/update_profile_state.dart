@@ -15,3 +15,13 @@ final class UpdateProfileErrorState extends UpdateProfileState {
 final class UpdateProfileLoadingState extends UpdateProfileState {}
 
 final class TakePhotoSuccessState extends UpdateProfileState {}
+
+final class GetAddressSuccessState extends UpdateProfileState {}
+
+final class GetAddressFailureState extends UpdateProfileState {
+  final String errMessage;
+
+  GetAddressFailureState({required this.errMessage});
+}
+
+final class GetAddressLoadingState extends UpdateProfileState {}
