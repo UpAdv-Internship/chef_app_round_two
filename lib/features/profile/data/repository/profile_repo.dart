@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:convert';
 
 import 'package:chef_app_round_two/core/databases/api/api_consumer.dart';
 import 'package:chef_app_round_two/core/databases/api/end_points.dart';
@@ -30,11 +30,11 @@ class ProfileRepo {
   Future<Either<String, String>> updateProfile({
     required String name,
     required String phone,
-    required String location,
+    Map<String, dynamic>? location,
     required String brandName,
     required String minCharge,
     required String disc,
-    required XFile image,
+    XFile? image,
   }) async {
     try {
       final res = await sl<ApiConsumer>().patch(
@@ -43,12 +43,14 @@ class ProfileRepo {
           'name': name,
           'phone': phone,
           'location':
-              '{"name":"Egypt","address":"meet halfa","coordinates":[1214451511,12541845]}',
+             jsonEncode(location),
           // 'location': location,
           'brandName': brandName,
           'minCharge': minCharge,
           'disc': disc,
-          'profilePic': await sl<UpdateProfileCubit>().uploadImagetoApi(image),
+          'profilePic': image == null
+              ? null
+              : await sl<UpdateProfileCubit>().uploadImagetoApi(image),
         },
         isFormData: true,
       );

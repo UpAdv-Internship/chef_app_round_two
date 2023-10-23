@@ -1,7 +1,6 @@
 import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/utils/commons.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/databases/api/end_points.dart';
 import '../../../../core/databases/cache/cache_helper.dart';
 import '../../../../core/services/service_locator.dart';
