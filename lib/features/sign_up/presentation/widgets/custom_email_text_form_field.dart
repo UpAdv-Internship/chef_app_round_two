@@ -30,6 +30,12 @@ class CustomEmailTextFormField extends StatelessWidget {
                   return AppStrings.thisFieldIsRequired.tr(context);
                 } else if (value.length < 10) {
                   return AppStrings.pleaseEnterValidEmail.tr(context);
+                } else if (value.contains(" ")) {
+                  return AppStrings.pleaseEnterValidEmail.tr(context);
+                } else if (value.contains("@") == false) {
+                  return AppStrings.pleaseEnterValidEmail.tr(context);
+                } else if (value.contains(".com")) {
+                  return AppStrings.pleaseEnterValidEmail.tr(context);
                 }
                 return null;
               },
