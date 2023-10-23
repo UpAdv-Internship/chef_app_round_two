@@ -72,5 +72,9 @@
     "thePasswordDoesNotMatch":"The Password Does Not Match",
     "thisEmailIsUsedBefore":"This Email Is Used Before",
     "PleaseCheckYourPassword": "Please Check Your Password",
-    "logoOrPicture":"Logo Or Your Picture"
+    "logoOrPicture":"Logo Or Your Picture",
+    "location":"Tap on icon to select your loction",
+    "enterYourCurrentlocationLocation":"Enter Your Current Location",
+    "minCharge":"Min Charge",
+    "pleaseEnterValidMinCharge":"Plaese Enter Your Min Charge"
 }

@@ -12,7 +12,7 @@ class CustomBrandNameTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     final signupCubit = BlocProvider.of<SignUpCubit>(context);
 
-    return CustomTextFormField(
+    return CustomSignUpTextFormField(
       controller: signupCubit.brandNameTextEditingController,
       lable: AppStrings.brandName.tr(context),
       validate: (value) {
