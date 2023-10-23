@@ -40,6 +40,7 @@ ThemeData getAppTheme() {
         borderRadius: BorderRadius.circular(8),
       ),
       border: OutlineInputBorder(
+        
         borderRadius: BorderRadius.circular(8),
       ),
       //?hint

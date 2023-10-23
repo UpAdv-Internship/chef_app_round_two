@@ -31,6 +31,7 @@ class CustomLoginTextFormField extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
         hintText: hint,
         labelText: lable,
+        labelStyle: const TextStyle(color: AppColors.primary),
         suffixIcon: IconButton(
           onPressed: suffixIconOnPressed,
           icon: Icon(
