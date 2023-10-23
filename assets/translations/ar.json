@@ -82,6 +82,13 @@
     "enterPhoneNumber": "ادخل رقم هاتفك", 
     "save": "حفظ",
     "pleaseEnterValidMinCharge":"من فضلك ادخل الحد الادني لقبول الطلبات",
-    "thisEmailNotValid":"هذا البريد الإلكتروني غير صالح"
+    "thisEmailNotValid":"هذا البريد الإلكتروني غير صالح",
     
+    "pleaseEnterValidMinCharge":"من فضلك ادخل الحد الادني لقبول الطلبات",
+    "letUsKnowYou":"ممكن نتعرف عليك اكتر ؟",
+    "requierdFiles":"مستندات مطلوبه",
+    "frontId":"صوره البطاقه الشخصيه من الامام",
+    "backId":"صوره البطاقه الشخصيه من الخلف",
+    "healthCertificate":"الشهاده الصحيه",
+    "signUpSuccessfully":"تم انشاء الحساب بنجاح"
 }
