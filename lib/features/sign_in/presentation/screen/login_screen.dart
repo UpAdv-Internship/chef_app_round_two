@@ -71,12 +71,13 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           //!text field email
                           CustomLoginTextFormField(
+                            lable: AppStrings.email.tr(context),
                             controller: loginCubit.emailController,
                             hint: AppStrings.email.tr(context),
                             validate: (data) {
                               if (data!.isEmpty ||
                                   !data.contains('@gmail.com')) {
-                                return "The email address you entered isn't connected to an account";
+                                return AppStrings.pleaseEnterValidEmail.tr(context);
                               }
 
                               return null;
@@ -88,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           //!text field password
                           CustomLoginTextFormField(
+                            lable: AppStrings.password.tr(context),
                             controller: loginCubit.passwordController,
                             isPassword: loginCubit.isLoginPasswordsShowing,
                             icon: loginCubit.suffixIcon,
@@ -97,7 +99,7 @@ class LoginScreen extends StatelessWidget {
                             hint: AppStrings.password.tr(context),
                             validate: (data) {
                               if (data!.length < 6 || data.isEmpty) {
-                                return "The password that you've entered is incorrect";
+                                return AppStrings.pleaseEnterValidPassword.tr(context);
                               }
 
                               return null;

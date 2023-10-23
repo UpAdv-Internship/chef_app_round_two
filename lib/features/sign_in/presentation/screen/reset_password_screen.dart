@@ -52,6 +52,8 @@ class ResetPasswordScreen extends StatelessWidget {
                 BlocProvider.of<ForgetPasswordCubit>(context)
                     .codeController
                     .clear();
+                    BlocProvider.of<ForgetPasswordCubit>(context)
+                                    .emailController.clear();
               }
               if (state is ResetPasswordErrorState) {
                 showToast(

@@ -32,10 +32,14 @@ ThemeData getAppTheme() {
       ),
       //?fouced border
       focusedBorder: OutlineInputBorder(
+        
         borderRadius: BorderRadius.circular(8),
       ),
       //?error border
       errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
       ),
       //?hint

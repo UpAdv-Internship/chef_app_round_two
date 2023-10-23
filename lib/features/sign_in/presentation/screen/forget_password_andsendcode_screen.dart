@@ -33,8 +33,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             listener: (context, state) {
                if(state is ForgetPasswordSuccessState){
                         showToast(message: AppStrings.checkMail.tr(context), toastStates:ToastStates.success);
-                        BlocProvider.of<ForgetPasswordCubit>(context)
-                                    .codeController.clear();
+                        
                         navigateReplacment(context: context, route: Routes.resetPasswordScreen);
                         
                     }
