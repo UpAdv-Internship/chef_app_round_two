@@ -104,4 +104,10 @@ class AppStrings {
   static const String thisEmailIsUsedBefore = 'thisEmailIsUsedBefore';
   static const String logoOrPicture = 'logoOrPicture';
   static const String plaeseEnterYourMinCharge = 'plaeseEnterYourMinCharge';
+  static const String letUsKnowYou = 'letUsKnowYou';
+  static const String requierdFiles = 'requierdFiles';
+  static const String frontId = 'frontId';
+  static const String backId = 'backId';
+  static const String healthCertificate = 'healthCertificate';
+  static const String signUpSuccessfully = 'signUpSuccessfully';
 }

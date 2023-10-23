@@ -29,17 +29,23 @@ class SignUpCubit extends Cubit<SignUpState> {
       TextEditingController();
   //!Location
   TextEditingController locationTextEditingController = TextEditingController();
-  Map? location;
+  Map<String, dynamic>? location;
   //!Brand Name
   TextEditingController brandNameTextEditingController =
       TextEditingController();
   //!minCharge
   TextEditingController minChargeTextEditingController =
       TextEditingController();
-  //ToDo:disc
-  //ToDo:healthCertificate
-  //ToDo:frontId
-  //ToDo:backId
+  //!disc
+  TextEditingController discTextEditingController = TextEditingController();
+
+  //!frontId
+  XFile? frontId;
+  //!backId
+  XFile? backId;
+
+  //!healthCertificate
+  XFile? healthCertificate;
 
   //!Profile Pic
   XFile? profilePic;
@@ -71,9 +77,24 @@ class SignUpCubit extends Cubit<SignUpState> {
     }
   }
 
-  void changeImage(value) {
+  void changeProfilePicImage(value) {
     profilePic = value;
-    emit(ChangeImageState());
+    emit(ChangeProfilePicImageState());
+  }
+
+  void changefrontIdPicImage(value) {
+    frontId = value;
+    emit(ChangeFrontIdPicImageState());
+  }
+
+  void changebackIdPicImage(value) {
+    backId = value;
+    emit(ChangeBackIdPicImageState());
+  }
+
+  void changehealthCertificatePicImage(value) {
+    healthCertificate = value;
+    emit(ChangeHealthCertificatePicImageState());
   }
 
   Future<Position> getPosition() async {
@@ -112,8 +133,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       };
       emit(GetAddressSuccessState());
     } catch (e) {
+      emit(GetAddressFailureState(errMessage: e.toString()));
       if (kDebugMode) {
-        emit(GetAddressFailureState(errMessage: e.toString()));
         print(e);
       }
     }
@@ -157,5 +178,28 @@ class SignUpCubit extends Cubit<SignUpState> {
             color: AppColors.primary,
           );
     emit(ChangeSignUpconfirmPasswordSuffixIcon());
+  }
+
+  signUp() async {
+    emit(SignUpLoadinStateState());
+    final result = await signUpRepo.signUp(
+      name: nameTextEditingController.text,
+      phone: phoneTextEditingController.text,
+      email: emailTextEditingController.text,
+      password: passwordTextEditingController.text,
+      confirmPassword: confirmPasswordTextEditingController.text,
+      location: location!,
+      brandName: brandNameTextEditingController.text,
+      minCharge: minChargeTextEditingController.text,
+      disc: discTextEditingController.text,
+      healthCertificate: healthCertificate!,
+      frontId: frontId!,
+      backId: backId!,
+      profilePic: profilePic!,
+    );
+    result.fold(
+      (l) => emit(SignUpFailureState(errMessage: l)),
+      (r) => emit(SignUpSuccessState()),
+    );
   }
 }

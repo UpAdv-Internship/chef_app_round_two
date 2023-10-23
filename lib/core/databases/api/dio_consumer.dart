@@ -4,7 +4,6 @@ import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-
 import 'api_consumer.dart';
 import 'api_interceptors.dart';
 import 'end_points.dart';
@@ -145,11 +144,16 @@ class DioConsumer extends ApiConsumer {
           case 504: // Bad request
 
             throw BadResponseException(ErrorModel.fromJson(e.response!.data));
+          default:
+            throw BadResponseException(
+                ErrorModel(errorMessage: e.response.toString()));
         }
 
       case DioExceptionType.cancel:
-        throw CancelException(
-            ErrorModel(errorMessage: e.toString(), status: 500,));
+        throw CancelException(ErrorModel(
+          errorMessage: e.toString(),
+          status: 500,
+        ));
 
       case DioExceptionType.unknown:
         throw UnknownException(
