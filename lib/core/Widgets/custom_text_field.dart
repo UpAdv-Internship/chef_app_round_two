@@ -2,22 +2,21 @@ import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
-    super.key,
-    required this.hint,
-    required this.controller,
-    this.isObscure = false,
-    this.showSuffix = false,
-    this.keyboardType,
-    this.validator,
-    this.suffixIcon,
-    this.changeSuffix, 
-    this.onChanged,
-  });
+  const CustomTextFormField(
+      {super.key,
+      required this.hint,
+      required this.controller,
+      this.isObscure = false,
+      this.keyboardType,
+      this.validator,
+      this.suffixIcon,
+      this.changeSuffix,
+      this.onChanged,
+      this.readOnly = false});
   final String hint;
+  final bool readOnly;
   final TextEditingController controller;
   final bool isObscure;
-  final bool showSuffix;
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
@@ -36,7 +35,8 @@ class CustomTextFormField extends StatelessWidget {
           },
       controller: controller,
       onChanged: onChanged,
-      cursorColor: AppColors.orange,
+      readOnly: readOnly,
+      cursorColor: AppColors.primary,
       obscureText: isObscure,
       keyboardType: keyboardType,
       decoration: InputDecoration(

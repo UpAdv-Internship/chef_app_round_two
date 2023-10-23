@@ -6,30 +6,29 @@ import 'package:chef_app_round_two/features/sign_up/presentation/widgets/custom_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomPasswordTextFormField extends StatelessWidget {
-  const CustomPasswordTextFormField({super.key});
-
+class CustomConfirmPasswordTextFormField extends StatelessWidget {
+  const CustomConfirmPasswordTextFormField({super.key});
   @override
   Widget build(BuildContext context) {
     final signupCubit = BlocProvider.of<SignUpCubit>(context);
-
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {},
       builder: (context, state) {
         return CustomSignUpTextFormField(
-          controller: signupCubit.passwordTextEditingController,
-          isPassword: signupCubit.isLoginPasswordsShowing,
+          controller: signupCubit.confirmPasswordTextEditingController,
+          lable: AppStrings.confirmPassword.tr(context),
+          isPassword: signupCubit.isLoginComfirmPasswordsShowing,
           suffixIcon: IconButton(
               onPressed: () {
-                signupCubit.changeLoginPasswordSuffixIcon();
+                signupCubit.changeLoginConfirmPasswordSuffixIcon();
               },
-              icon: signupCubit.passwordSuffixIcon),
-          lable: AppStrings.password.tr(context),
+              icon: signupCubit.confirmPasswordSuffixIcon),
           validate: (value) {
             if (value!.isEmpty) {
               return AppStrings.thisFieldIsRequired.tr(context);
-            } else if (value.length < 6) {
-              return AppStrings.pleaseEnterValidPassword.tr(context);
+            } else if (signupCubit.passwordTextEditingController.text !=
+                value) {
+              return AppStrings.thePasswordDoesNotMatch.tr(context);
             } else {
               return null;
             }

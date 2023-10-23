@@ -37,6 +37,7 @@ class AppStrings {
   static const String pleaseEnterValidCode = 'pleaseEnterValidCode';
   static const String passwordChangedSucessfully = 'PasswordChangedSucessfully';
   static const String pleaseEnterValidNumber = 'pleaseEnterValidNumber';
+  static const String pleaseCheckYourPassword = 'PleaseCheckYourPassword';
 
   //! home-order-menu
   static const String addDishToMenu = 'addDishToMenu';
@@ -75,6 +76,8 @@ class AppStrings {
   static const String cancel = 'cancel';
   static const String language = 'language';
   static const String location = 'location';
+  static const String enterYourCurrentLocation =
+      'enterYourCurrentlocationLocation';
   static const String minCharge = 'minCharge';
   static const String brandName = 'brandName';
   static const String update = 'update';
@@ -87,4 +90,10 @@ class AppStrings {
       'pleaseEnterValidChargeAtLeastTwentyChar';
   static const String next = 'next';
   static const String previous = 'previous';
+  static const String thisFieldIsRequired = 'thisFieldIsRequired';
+  static const String correctData = 'correctData';
+  static const String thePasswordDoesNotMatch = 'thePasswordDoesNotMatch';
+  static const String thisEmailIsUsedBefore = 'thisEmailIsUsedBefore';
+  static const String logoOrPicture = 'logoOrPicture';
+  static const String plaeseEnterYourMinCharge = 'plaeseEnterYourMinCharge';
 }

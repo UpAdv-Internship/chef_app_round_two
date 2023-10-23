@@ -91,7 +91,9 @@ class HomeScreen extends StatelessWidget {
                       //* Change password
                       CustomListTile(
                         title: 'Change Password',
-                        onTap: () {},
+                        onTap: () {
+                          navigate(context: context, route: Routes.changePassword);
+                        },
                       ),
                       //* Logout
                       CustomListTile(

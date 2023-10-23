@@ -39,7 +39,7 @@
     "mealPrice": "Meal Price",
     "mealNumber": "Number",
     "mealQuantity": "Quantity",
-    "upladPhoto": "Uplad Photo",
+    "upladPhoto": "Please Upload Photo",
     "addToMenu": "Add To Menu",
     "mealAddedSucessfully": "Meal Added Sucessfully",
     "mealDeletedSucessfully": "mealDeletedSucessfully",
@@ -64,5 +64,18 @@
     "camera": "Camera",
     "gallery": "Gallery",
     "next":"Next",
-    "previous":"Previous"
+    "previous":"Previous",
+    "brandName":"Brand Name",
+    "createAccount":"Create Account",
+    "thisFieldIsRequired":"This Field Is Required",
+    "pleaseEnterValidBrandName":"Please Enter Valid Brand Name",
+    "correctData":"Correct Data",
+    "thePasswordDoesNotMatch":"The Password Does Not Match",
+    "thisEmailIsUsedBefore":"This Email Is Used Before",
+    "PleaseCheckYourPassword": "Please Check Your Password",
+    "logoOrPicture":"Logo Or Your Picture",
+    "location":"Tap on icon to select your loction",
+    "enterYourCurrentlocationLocation":"Enter Your Current Location",
+    "minCharge":"Min Charge",
+    "pleaseEnterValidMinCharge":"Plaese Enter Your Min Charge"
 }

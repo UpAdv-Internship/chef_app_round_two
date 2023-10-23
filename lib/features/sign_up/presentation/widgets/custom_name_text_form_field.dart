@@ -1,3 +1,4 @@
+import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/widgets/custom_text_form_field.dart';
@@ -11,18 +12,15 @@ class CustomNameTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     final signupCubit = BlocProvider.of<SignUpCubit>(context);
 
-    return CustomTextFormField(
+    return CustomSignUpTextFormField(
       controller: signupCubit.nameTextEditingController,
-      lable: AppStrings.name,
+      lable: AppStrings.name.tr(context),
       keyboardType: TextInputType.name,
       validate: (value) {
-        final RegExp regex = RegExp('[a-zA-Z]');
         if (value!.isEmpty) {
-          return "هذا الحقل مطلوب";
-        } else if (value.length < 5) {
-          return "برجاء ادخال الاسم كاملا";
-        } else if (regex.hasMatch(value) == false) {
-          return "يجب ان يتكون الاسم من حروف فقط";
+          return AppStrings.thisFieldIsRequired.tr(context);
+        } else if (value.length < 3) {
+          return AppStrings.pleaseEnterValidName.tr(context);
         }
         return null;
       },
