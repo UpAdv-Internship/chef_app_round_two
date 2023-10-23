@@ -3,8 +3,9 @@
     "chefApp": "Chef App",
     "pleaseChooseYourLanguage": "Please Choose Your Language",
     "welcomeBack": "Welcome Back",
+    "dontHaveAnAccount": "Dont Have An Account",
     "sign_in": "Login",
-    "sign_up": "Regsiter",
+    "signUp": "Sign Up",
     "loginSucessfully": "Login Sucessfully",
     "loginFailed": "Invalid Data",
     "email": "Email",
@@ -79,6 +80,7 @@
     "pleaseEnterValidMinCharge":"Plaese Enter Your Min Charge",
     "sureToLogout":"Sure To Logout",
     "enterPhoneNumber": "Enter Your Name",
-    "save": "Save"
-
+    "save": "Save",
+    "thisEmailNotValid":"This Email Not Valid"
+    
 }

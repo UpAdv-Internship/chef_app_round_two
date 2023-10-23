@@ -12,7 +12,7 @@ class CustomTextFormField extends StatelessWidget {
       this.suffixIcon,
       this.changeSuffix,
       this.onChanged,
-      this.readOnly = false});
+      this.readOnly = false, required String? Function(dynamic data) validate});
   final String hint;
   final bool readOnly;
   final TextEditingController controller;

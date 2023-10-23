@@ -7,7 +7,7 @@ class AppStrings {
   static const String camera = 'camera';
   static const String writeHere = 'writeHere';
   static const String signIn = 'sign_in';
-  static const String signUp = 'sign_up';
+  static const String signUp = 'signUp';
   static const String createAccount = 'createAccount';
   static const String email = 'email';
   static const String name = 'name';
@@ -34,10 +34,13 @@ class AppStrings {
   static const String le = 'le';
   static const String dontHaveAnAccount = 'dontHaveAnAccount';
   static const String checkMail = 'checkMail';
+  static const String thisEmailNotValid = 'thisEmailNotValid';
   static const String pleaseEnterValidCode = 'pleaseEnterValidCode';
-  static const String passwordChangedSucessfully = 'PasswordChangedSucessfully';
+  static const String passwordChangedSucessfully = 'passwordChangedSucessfully';
   static const String pleaseEnterValidNumber = 'pleaseEnterValidNumber';
   static const String pleaseCheckYourPassword = 'PleaseCheckYourPassword';
+
+  
 
   //! home-order-menu
   static const String addDishToMenu = 'addDishToMenu';
