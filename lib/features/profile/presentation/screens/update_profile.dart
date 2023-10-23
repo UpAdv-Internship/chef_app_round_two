@@ -73,11 +73,11 @@ class UpdateProfileScreen extends StatelessWidget {
                             Align(
                               alignment: Alignment.center,
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(90),
+                                borderRadius: BorderRadius.circular(85),
                                 child: Container(
                                     padding: const EdgeInsets.all(0),
-                                    width: 180,
-                                    height: 180,
+                                    width: 170,
+                                    height: 170,
                                     child: sl<UpdateProfileCubit>().image ==
                                             null
                                         ? CachedNetworkImage(
@@ -85,9 +85,6 @@ class UpdateProfileScreen extends StatelessWidget {
                                             imageUrl: sl<HomeCubit>()
                                                 .chefModel!
                                                 .profilePic,
-
-                                            // ? sl<HomeCubit>().chefModel!.profilePic
-                                            // : sl<UpdateProfileCubit>().image!.path,
                                             placeholder: (context, url) =>
                                                 Shimmer.fromColors(
                                               baseColor: AppColors.grey,

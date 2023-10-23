@@ -22,7 +22,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   TextEditingController discController = TextEditingController();
   GlobalKey<FormState> updateProfileKey = GlobalKey<FormState>();
   // XFile image = XFile(sl<HomeCubit>().profileImage!.path);
-  XFile? image;
+  XFile? image ;
 
   //! Image Picker
   void takePhoto(value) {
@@ -53,13 +53,13 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
     final res = await profileRepo.updateProfile(
       name: nameController.text,
       phone: phoneController.text,
-      location: locationController.text,
+      location: location!,
       // location: currentPosition.toString(),
       brandName: brandNameController.text,
       minCharge: minChargeController.text,
       disc: discController.text,
       // image: await uploadImagetoApi(XFile(sl<HomeCubit>().profileImage!.path)),
-      image: image!,
+      image: image,
     );
     res.fold(
       (l) => emit(UpdateProfileErrorState(l)),
@@ -74,7 +74,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   //! Location
   Position? currentPosition;
   String? currentAddress;
-  Map? location;
+  Map<String,dynamic>? location;
 
   Future<Position> getPosition() async {
     LocationPermission permission;

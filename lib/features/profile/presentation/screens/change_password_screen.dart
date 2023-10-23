@@ -1,7 +1,7 @@
 import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/Widgets/custom_loading_indecator.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_router.dart';
@@ -45,13 +45,12 @@ class ChangePasswordScreen extends StatelessWidget {
                       .updatePasswordKey,
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      Image.asset(AppAssets.lock),
+                      //! Image
+                      Image.asset(AppAssets.lock, height: 250.h),
                       const SizedBox(
                         height: 25,
                       ),
+                      //! Text
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -65,7 +64,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                      //old pass
+                      //! Old Password
                       AliTextFormField(
                         controller:
                             BlocProvider.of<UpdatePasswordCubit>(context)
@@ -91,7 +90,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                      //new pass
+                      //! New Password
                       AliTextFormField(
                         controller:
                             BlocProvider.of<UpdatePasswordCubit>(context)
@@ -124,7 +123,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                      //confirm pass
+                      //! Confirm Password
                       AliTextFormField(
                         controller:
                             BlocProvider.of<UpdatePasswordCubit>(context)
@@ -146,12 +145,11 @@ class ChangePasswordScreen extends StatelessWidget {
                           }
                           if (data !=
                               BlocProvider.of<UpdatePasswordCubit>(context)
-                                  .confirmPassController
+                                  .newPassController
                                   .text) {
                             return AppStrings.pleaseEnterValidPassword
                                 .tr(context);
                           }
-
                           return null;
                         },
                       ),
