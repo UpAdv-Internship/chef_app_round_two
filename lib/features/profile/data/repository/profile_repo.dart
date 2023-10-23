@@ -13,12 +13,10 @@ class ProfileRepo {
   Future<Either<String, ChefModel>> getData() async {
     try {
       //
-      
+
       final res = await sl<ApiConsumer>().get(
         EndPoint.getChefDataEndPoints(
-          sl<CacheHelper>().getData(key: Apikeys.id)
-          
-        ),
+            sl<CacheHelper>().getData(key: Apikeys.id)),
       );
       return Right(ChefModel.fromjson(res[Apikeys.chef]));
     } on ServerException catch (e) {
@@ -58,4 +56,14 @@ class ProfileRepo {
     }
   }
   //! Change Password
+
+  //! Logout
+  Future<Either<String, String>> logout() async {
+    try {
+      final res = await sl<ApiConsumer>().get(EndPoint.logout);
+      return Right(res[Apikeys.message]);
+    } on ServerException catch (e) {
+      return Left(e.errorModel.errorMessage);
+    }
+  }
 }

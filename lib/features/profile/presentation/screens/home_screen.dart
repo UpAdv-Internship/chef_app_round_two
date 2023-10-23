@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chef_app_round_two/core/Widgets/custom_loading_indecator.dart';
 import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/core/utils/app_assets.dart';
 import 'package:chef_app_round_two/core/utils/app_router.dart';
@@ -18,7 +19,17 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: BlocBuilder<HomeCubit, HomeState>(
+        body: BlocConsumer<HomeCubit, HomeState>(
+          listener: (context, state) {
+            if (state is LogoutSuccesState) {
+              navigateReplacment(context: context, route: Routes.login);
+              showToast(
+                  message: state.message, toastStates: ToastStates.success);
+            }
+            if (state is LogoutErrorState) {
+              showToast(message: state.message, toastStates: ToastStates.error);
+            }
+          },
           builder: (context, state) {
             final homeCubit = BlocProvider.of<HomeCubit>(context);
             return Column(
@@ -53,7 +64,6 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 15.h),
                 //! Name & Email
-
                 Column(
                   children: [
                     state is GetDataLoadingState
@@ -92,13 +102,46 @@ class HomeScreen extends StatelessWidget {
                       CustomListTile(
                         title: 'Change Password',
                         onTap: () {
-                          navigate(context: context, route: Routes.changePassword);
+                          navigate(
+                              context: context, route: Routes.changePassword);
                         },
                       ),
                       //* Logout
                       CustomListTile(
                         title: 'Logout',
-                        onTap: () {},
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Text('Are You Sure You Want to Logout'),
+                                  SizedBox(height: 20.h),
+                                  state is LogoutLoadingState
+                                      ? const CustomLoadingIndicator()
+                                      : Row(
+                                          children: [
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                homeCubit.logout();
+                                              },
+                                              child: const Text('Logout'),
+                                            ),
+                                            SizedBox(width: 20.w),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                popNavigate(context: context);
+                                              },
+                                              child: const Text('no'),
+                                            ),
+                                          ],
+                                        ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

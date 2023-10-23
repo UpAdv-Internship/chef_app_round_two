@@ -1,3 +1,5 @@
+import 'package:chef_app_round_two/core/databases/cache/cache_helper.dart';
+import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/features/profile/data/model/chef_data_model.dart';
 import 'package:chef_app_round_two/features/profile/data/repository/profile_repo.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_state.dart';
@@ -22,6 +24,19 @@ class HomeCubit extends Cubit<HomeState> {
         chefModel = r;
         profileImage = await downloadAndSaveImage(r.profilePic);
         emit(GetDataSuccessState());
+      },
+    );
+  }
+
+  //! Logout
+  Future logout() async {
+    emit(LogoutLoadingState());
+    final res = await profileRepo.logout();
+    res.fold(
+      (l) => emit(LogoutErrorState(message: l)),
+      (r) {
+        sl<CacheHelper>().clearData(key: 'token');
+        emit(LogoutSuccesState(message: r));
       },
     );
   }

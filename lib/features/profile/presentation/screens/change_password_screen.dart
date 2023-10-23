@@ -32,7 +32,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 if (state is UpdatePasswordSuccessState) {
                   showToast(
                       message: state.message, toastStates: ToastStates.success);
-                  navigateReplacment(context: context, route: Routes.login);
+                  navigateReplacment(context: context, route: Routes.home);
                 }
                 if (state is UpdatePasswordErrorState) {
                   showToast(
