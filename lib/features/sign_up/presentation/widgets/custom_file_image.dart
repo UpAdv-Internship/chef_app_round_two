@@ -12,6 +12,7 @@ class CustomFileImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return image != null
         ? CircleAvatar(
+            backgroundColor: AppColors.grey.withOpacity(0.85),
             radius: 100,
             backgroundImage: FileImage(
               File(image!.path),
