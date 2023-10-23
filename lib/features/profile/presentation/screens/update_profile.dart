@@ -54,7 +54,7 @@ class UpdateProfileScreen extends StatelessWidget {
                   updateCubit.phoneController.text =
                       sl<HomeCubit>().chefModel!.phone;
                   updateCubit.locationController.text =
-                      updateCubit.currentPosition.toString();
+                      updateCubit.currentAddress.toString();
                   updateCubit.brandNameController.text =
                       sl<HomeCubit>().chefModel!.brandName;
                   updateCubit.minChargeController.text =
