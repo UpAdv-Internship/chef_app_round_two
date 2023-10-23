@@ -72,5 +72,9 @@
     "thePasswordDoesNotMatch":"كلمة السر غير متطابقه",
     "thisEmailIsUsedBefore":"هذا الحساب مستخدم من قبل",
     "PleaseCheckYourPassword": "من فضلك تأكد من كلمة السر",
-    "logoOrPicture":"الشعار او الصوره الشخصية"
+    "logoOrPicture":"الشعار او الصوره الشخصية",
+    "location":"اضغط علي الايقونه لتحديد الموقع",
+    "enterYourCurrentlocationLocation":"ادخل عنوانك بالتفصيل",
+    "minCharge":"الحد الادني لقبول الطلبات",
+    "pleaseEnterValidMinCharge":"من فضلك ادخل الحد الادني لقبول الطلبات"
 }

@@ -11,7 +11,7 @@ class CustomPhoneTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final signupCubit = BlocProvider.of<SignUpCubit>(context);
-    return CustomTextFormField(
+    return CustomSignUpTextFormField(
       controller: signupCubit.phoneTextEditingController,
       lable: AppStrings.phoneNumber.tr(context),
       keyboardType: TextInputType.phone,
