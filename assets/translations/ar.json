@@ -76,5 +76,10 @@
     "location":"اضغط علي الايقونه لتحديد الموقع",
     "enterYourCurrentlocationLocation":"ادخل عنوانك بالتفصيل",
     "minCharge":"الحد الادني لقبول الطلبات",
-    "pleaseEnterValidMinCharge":"من فضلك ادخل الحد الادني لقبول الطلبات"
+    "pleaseEnterValidMinCharge":"من فضلك ادخل الحد الادني لقبول الطلبات",
+    "letUsKnowYou":"ممكن نتعرف عليك اكتر ؟",
+    "requierdFiles":"مستندات مطلوبه",
+    "frontId":"صوره البطاقه الشخصيه من الامام",
+    "backId":"صوره البطاقه الشخصيه من الخلف",
+    "healthCertificate":"الشهاده الصحيه"
 }

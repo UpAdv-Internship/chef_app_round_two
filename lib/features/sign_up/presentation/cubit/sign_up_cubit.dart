@@ -36,10 +36,16 @@ class SignUpCubit extends Cubit<SignUpState> {
   //!minCharge
   TextEditingController minChargeTextEditingController =
       TextEditingController();
-  //ToDo:disc
-  //ToDo:healthCertificate
-  //ToDo:frontId
-  //ToDo:backId
+  //!disc
+  TextEditingController discTextEditingController = TextEditingController();
+
+  //!frontId
+  XFile? frontId;
+  //!backId
+  XFile? backId;
+
+  //!healthCertificate
+  XFile? healthCertificate;
 
   //!Profile Pic
   XFile? profilePic;
@@ -71,9 +77,24 @@ class SignUpCubit extends Cubit<SignUpState> {
     }
   }
 
-  void changeImage(value) {
+  void changeProfilePicImage(value) {
     profilePic = value;
-    emit(ChangeImageState());
+    emit(ChangeProfilePicImageState());
+  }
+
+  void changefrontIdPicImage(value) {
+    frontId = value;
+    emit(ChangeFrontIdPicImageState());
+  }
+
+  void changebackIdPicImage(value) {
+    backId = value;
+    emit(ChangeBackIdPicImageState());
+  }
+
+  void changehealthCertificatePicImage(value) {
+    healthCertificate = value;
+    emit(ChangeHealthCertificatePicImageState());
   }
 
   Future<Position> getPosition() async {
