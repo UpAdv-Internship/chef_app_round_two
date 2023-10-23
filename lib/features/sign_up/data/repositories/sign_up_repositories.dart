@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:chef_app_round_two/core/common/commons.dart';
 import 'package:chef_app_round_two/core/databases/api/api_consumer.dart';
 import 'package:chef_app_round_two/core/databases/api/end_points.dart';
@@ -30,7 +32,7 @@ class SignUpRepo {
     required String email,
     required String password,
     required String confirmPassword,
-    required String location,
+    required Map<String, dynamic> location,
     required String brandName,
     required String minCharge,
     required String disc,
@@ -49,7 +51,7 @@ class SignUpRepo {
           Apikeys.email: email,
           Apikeys.password: password,
           Apikeys.confirmPassword: confirmPassword,
-          Apikeys.location: location,
+          Apikeys.location: jsonEncode(location),
           Apikeys.brandName: brandName,
           Apikeys.minCharge: minCharge,
           Apikeys.disc: disc,

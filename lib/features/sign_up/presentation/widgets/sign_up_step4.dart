@@ -22,6 +22,7 @@ class SignUpStep4 extends StatelessWidget {
           showToast(
               message: AppStrings.signUpSuccessfully,
               toastStates: ToastStates.success);
+          popNavigate(context: context);
         } else if (state is SignUpFailureState) {
           showToast(message: state.errMessage, toastStates: ToastStates.error);
         }

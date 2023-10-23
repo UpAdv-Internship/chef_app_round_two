@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:chef_app_round_two/features/sign_up/data/repositories/sign_up_repositories.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_state.dart';
@@ -31,7 +29,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       TextEditingController();
   //!Location
   TextEditingController locationTextEditingController = TextEditingController();
-  Map? location;
+  Map<String, dynamic>? location;
   //!Brand Name
   TextEditingController brandNameTextEditingController =
       TextEditingController();
@@ -135,8 +133,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       };
       emit(GetAddressSuccessState());
     } catch (e) {
+      emit(GetAddressFailureState(errMessage: e.toString()));
       if (kDebugMode) {
-        emit(GetAddressFailureState(errMessage: e.toString()));
         print(e);
       }
     }
@@ -190,7 +188,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       email: emailTextEditingController.text,
       password: passwordTextEditingController.text,
       confirmPassword: confirmPasswordTextEditingController.text,
-      location: jsonEncode(location),
+      location: location!,
       brandName: brandNameTextEditingController.text,
       minCharge: minChargeTextEditingController.text,
       disc: discTextEditingController.text,
