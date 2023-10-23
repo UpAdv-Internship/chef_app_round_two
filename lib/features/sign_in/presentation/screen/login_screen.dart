@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   Center(
                       child: Text(
-                    'welcome back',
+                    AppStrings.welcomeBack.tr(context),
                     style: Theme.of(context).textTheme.displayLarge,
                   ))
                 ],
@@ -50,13 +50,13 @@ class LoginScreen extends StatelessWidget {
                   listener: (context, state) {
                     if (state is LoginSuccessState) {
                       showToast(
-                          message: 'login successfully',
+                          message: AppStrings.loginSucessfully,
                           toastStates: ToastStates.success);
                       navigateReplacment(context: context, route: Routes.home);
                     }
                     if (state is LoginErrorState) {
                       showToast(
-                          message: 'login faild',
+                          message: AppStrings.loginFailed,
                           toastStates: ToastStates.error);
                     }
                   },
@@ -110,7 +110,7 @@ class LoginScreen extends StatelessWidget {
                               TextButton(
                                   onPressed: () {},
                                   child: Text(
-                                    'forget passwrd ?',
+                                    AppStrings.forgetPassword.tr(context),
                                     style: Theme.of(context)
                                         .textTheme
                                         .displayMedium!
@@ -141,8 +141,8 @@ class LoginScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
-                                'Don’t have an account?',
+                               Text(
+                                AppStrings.dontHaveAnAccount.tr(context),
                               ),
                               TextButton(
                                   onPressed: () {
@@ -150,7 +150,7 @@ class LoginScreen extends StatelessWidget {
                                         context: context, route: Routes.signUp);
                                   },
                                   child: Text(
-                                    'Sign Up',
+                                    AppStrings.signUp.tr(context),
                                     style: Theme.of(context)
                                         .textTheme
                                         .displayMedium!
