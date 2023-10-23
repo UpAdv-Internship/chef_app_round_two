@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:chef_app_round_two/features/sign_up/data/repositories/sign_up_repositories.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_state.dart';
@@ -178,5 +180,28 @@ class SignUpCubit extends Cubit<SignUpState> {
             color: AppColors.primary,
           );
     emit(ChangeSignUpconfirmPasswordSuffixIcon());
+  }
+
+  signUp() async {
+    emit(SignUpLoadinStateState());
+    final result = await signUpRepo.signUp(
+      name: nameTextEditingController.text,
+      phone: phoneTextEditingController.text,
+      email: emailTextEditingController.text,
+      password: passwordTextEditingController.text,
+      confirmPassword: confirmPasswordTextEditingController.text,
+      location: jsonEncode(location),
+      brandName: brandNameTextEditingController.text,
+      minCharge: minChargeTextEditingController.text,
+      disc: discTextEditingController.text,
+      healthCertificate: healthCertificate!,
+      frontId: frontId!,
+      backId: backId!,
+      profilePic: profilePic!,
+    );
+    result.fold(
+      (l) => emit(SignUpFailureState(errMessage: l)),
+      (r) => emit(SignUpSuccessState()),
+    );
   }
 }

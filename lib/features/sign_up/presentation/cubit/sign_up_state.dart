@@ -35,3 +35,12 @@ final class UpdateStepperIndexState extends SignUpState {}
 final class ChangeSignUpPasswordSuffixIcon extends SignUpState {}
 
 final class ChangeSignUpconfirmPasswordSuffixIcon extends SignUpState {}
+
+final class SignUpLoadinStateState extends SignUpState {}
+
+final class SignUpSuccessState extends SignUpState {}
+
+final class SignUpFailureState extends SignUpState {
+  final String errMessage;
+  SignUpFailureState({required this.errMessage});
+}

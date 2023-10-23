@@ -81,5 +81,6 @@
     "requierdFiles":"مستندات مطلوبه",
     "frontId":"صوره البطاقه الشخصيه من الامام",
     "backId":"صوره البطاقه الشخصيه من الخلف",
-    "healthCertificate":"الشهاده الصحيه"
+    "healthCertificate":"الشهاده الصحيه",
+    "signUpSuccessfully":"تم انشاء الحساب بنجاح"
 }

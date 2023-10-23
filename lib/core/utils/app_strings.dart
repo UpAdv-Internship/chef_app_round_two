@@ -101,4 +101,5 @@ class AppStrings {
   static const String frontId = 'frontId';
   static const String backId = 'backId';
   static const String healthCertificate = 'healthCertificate';
+  static const String signUpSuccessfully = 'signUpSuccessfully';
 }
