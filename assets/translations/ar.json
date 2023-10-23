@@ -39,7 +39,7 @@
     "mealPrice": "سعر الوجبة",
     "mealNumber": "بالعدد",
     "mealQuantity": "بالكمية",
-    "upladPhoto": "اضافة صورة",
+    "upladPhoto": "برجاء اضافة صورة",
     "addToMenu": "إضافة للمنيو",
     "mealAddedSucessfully": "تم إضافة الوجبة بنجاح",
     "mealDeletedSucessfully": "تم حذف الوجبة بنجاح",
@@ -63,5 +63,14 @@
     "camera": "الكامير",
     "gallery": "المعرض",
     "next":"التالي",
-    "previous":"previous"
+    "previous":"السابق",
+    "brandName":"اسم البراند",
+    "createAccount":"انشاء حساب",
+    "thisFieldIsRequired":"هذا الحقل مطلوب",
+    "pleaseEnterValidBrandName":"من فضلك ادخل اسم براند صحيح",
+    "correctData":"بيانات صحيحه",
+    "thePasswordDoesNotMatch":"كلمة السر غير متطابقه",
+    "thisEmailIsUsedBefore":"هذا الحساب مستخدم من قبل",
+    "PleaseCheckYourPassword": "من فضلك تأكد من كلمة السر",
+    "logoOrPicture":"الشعار او الصوره الشخصية"
 }

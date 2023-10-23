@@ -11,7 +11,7 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.suffixIcon,
-    this.changeSuffix, 
+    this.changeSuffix,
     this.onChanged,
   });
   final String hint;
@@ -36,7 +36,7 @@ class CustomTextFormField extends StatelessWidget {
           },
       controller: controller,
       onChanged: onChanged,
-      cursorColor: AppColors.orange,
+      cursorColor: AppColors.primary,
       obscureText: isObscure,
       keyboardType: keyboardType,
       decoration: InputDecoration(

@@ -1,3 +1,5 @@
+import 'package:chef_app_round_two/core/local/app_locale.dart';
+import 'package:chef_app_round_two/core/utils/app_colors.dart';
 import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_state.dart';
@@ -16,21 +18,35 @@ class SignUpStep3 extends StatelessWidget {
         return Form(
           child: Column(
             children: [
-              const Text("Three"),
+              //!Butttons
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                      onPressed: () {
-                        signupCubit.increaseStepperIndex();
-                      },
-                      child: const Text(AppStrings.next)),
+                    onPressed: () {
+                      signupCubit.decreaseStepperIndex();
+                    },
+                    child: Text(
+                      AppStrings.previous.tr(context),
+                      style: const TextStyle(
+                        color: AppColors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                   const SizedBox(width: 20),
                   ElevatedButton(
-                      onPressed: () {
-                        signupCubit.decreaseStepperIndex();
-                      },
-                      child: const Text(AppStrings.previous)),
+                    onPressed: () {
+                      signupCubit.increaseStepperIndex();
+                    },
+                    child: Text(
+                      AppStrings.next.tr(context),
+                      style: const TextStyle(
+                        color: AppColors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ],
               )
             ],

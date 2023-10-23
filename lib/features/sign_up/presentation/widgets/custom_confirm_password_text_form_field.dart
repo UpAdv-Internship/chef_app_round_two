@@ -5,24 +5,22 @@ import 'package:chef_app_round_two/features/sign_up/presentation/widgets/custom_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomNameTextFormField extends StatelessWidget {
-  const CustomNameTextFormField({super.key});
-
+class CustomConfirmPasswordTextFormField extends StatelessWidget {
+  const CustomConfirmPasswordTextFormField({super.key});
   @override
   Widget build(BuildContext context) {
     final signupCubit = BlocProvider.of<SignUpCubit>(context);
-
     return CustomTextFormField(
-      controller: signupCubit.nameTextEditingController,
-      lable: AppStrings.name.tr(context),
-      keyboardType: TextInputType.name,
+      controller: signupCubit.confirmPasswordTextEditingController,
+      lable: AppStrings.confirmPassword.tr(context),
       validate: (value) {
         if (value!.isEmpty) {
           return AppStrings.thisFieldIsRequired.tr(context);
-        } else if (value.length < 3) {
-          return AppStrings.pleaseEnterValidName.tr(context);
+        } else if (signupCubit.passwordTextEditingController.text != value) {
+          return AppStrings.thePasswordDoesNotMatch.tr(context);
+        } else {
+          return null;
         }
-        return null;
       },
     );
   }

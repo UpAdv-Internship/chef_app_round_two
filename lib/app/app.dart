@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -33,6 +32,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               initialRoute: Routes.intitlRoute,
               onGenerateRoute: AppRoutes.generateRoute,
+
             );
           },
         );

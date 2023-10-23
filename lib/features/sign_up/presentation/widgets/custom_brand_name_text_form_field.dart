@@ -1,3 +1,4 @@
+import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/widgets/custom_text_form_field.dart';
@@ -13,11 +14,12 @@ class CustomBrandNameTextFormField extends StatelessWidget {
 
     return CustomTextFormField(
       controller: signupCubit.brandNameTextEditingController,
-      lable: AppStrings.brandName,
-      onChanged: (value){},
+      lable: AppStrings.brandName.tr(context),
       validate: (value) {
         if (value!.isEmpty) {
-          return "هذا الحقل مطلوب";
+          return AppStrings.thisFieldIsRequired.tr(context);
+        } else if (value.length <= 2) {
+          return AppStrings.pleaseEnterValidBrandName.tr(context);
         } else {
           return null;
         }

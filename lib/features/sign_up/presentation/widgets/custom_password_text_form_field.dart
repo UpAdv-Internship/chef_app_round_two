@@ -1,3 +1,4 @@
+import 'package:chef_app_round_two/core/local/app_locale.dart';
 import 'package:chef_app_round_two/core/utils/app_strings.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/cubit/sign_up_cubit.dart';
 import 'package:chef_app_round_two/features/sign_up/presentation/widgets/custom_text_form_field.dart';
@@ -13,10 +14,12 @@ class CustomPasswordTextFormField extends StatelessWidget {
 
     return CustomTextFormField(
       controller: signupCubit.passwordTextEditingController,
-      lable: AppStrings.password,
+      lable: AppStrings.password.tr(context),
       validate: (value) {
         if (value!.isEmpty) {
-          return "هذا الحقل مطلوب";
+          return AppStrings.thisFieldIsRequired.tr(context);
+        } else if (value.length < 6) {
+          return AppStrings.pleaseEnterValidPassword.tr(context);
         } else {
           return null;
         }

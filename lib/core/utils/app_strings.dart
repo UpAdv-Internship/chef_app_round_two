@@ -37,6 +37,7 @@ class AppStrings {
   static const String pleaseEnterValidCode = 'pleaseEnterValidCode';
   static const String passwordChangedSucessfully = 'PasswordChangedSucessfully';
   static const String pleaseEnterValidNumber = 'pleaseEnterValidNumber';
+  static const String pleaseCheckYourPassword = 'PleaseCheckYourPassword';
 
   //! home-order-menu
   static const String addDishToMenu = 'addDishToMenu';
@@ -87,4 +88,9 @@ class AppStrings {
       'pleaseEnterValidChargeAtLeastTwentyChar';
   static const String next = 'next';
   static const String previous = 'previous';
+  static const String thisFieldIsRequired = 'thisFieldIsRequired';
+  static const String correctData = 'correctData';
+  static const String thePasswordDoesNotMatch = 'thePasswordDoesNotMatch';
+  static const String thisEmailIsUsedBefore = 'thisEmailIsUsedBefore';
+    static const String logoOrPicture = 'logoOrPicture';
 }

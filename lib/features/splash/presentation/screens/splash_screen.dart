@@ -20,11 +20,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    navigationAfterThreeSeconds();
+    navigationAfterThreeSeconds(context);
     super.initState();
   }
 
-  void navigationAfterThreeSeconds() {
+  void navigationAfterThreeSeconds(context) {
     Future.delayed(const Duration(seconds: 3)).then((value) async {
       await sl<CacheHelper>().getData(key: Apikeys.token) == null
           ? navigateReplacment(context: context, route: Routes.changeLang)
