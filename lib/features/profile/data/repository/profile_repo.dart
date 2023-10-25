@@ -42,9 +42,7 @@ class ProfileRepo {
         data: {
           'name': name,
           'phone': phone,
-          'location':
-             jsonEncode(location),
-          // 'location': location,
+          'location': jsonEncode(location),
           'brandName': brandName,
           'minCharge': minCharge,
           'disc': disc,
@@ -70,4 +68,11 @@ class ProfileRepo {
       return Left(e.errorModel.errorMessage);
     }
   }
+
+  // //! Delete Account
+  // Future<Either<String, String>> deleteAcc() async {
+  //   try {
+  //     final res = await sl<ApiConsumer>().delete(EndPoint.);
+  //   } catch (e) {}
+  // }
 }
