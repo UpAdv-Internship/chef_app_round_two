@@ -31,6 +31,7 @@ class UpdateProfileScreen extends StatelessWidget {
           leading: IconButton(
             onPressed: () {
               sl<UpdateProfileCubit>().image = null;
+              sl<UpdateProfileCubit>().clearController();
               navigateReplacment(context: context, route: Routes.home);
             },
             icon: const Icon(Icons.arrow_back),
@@ -57,7 +58,9 @@ class UpdateProfileScreen extends StatelessWidget {
                   final updateCubit =
                       BlocProvider.of<UpdateProfileCubit>(context);
                   updateCubit.nameController.text =
-                      sl<HomeCubit>().chefModel!.name;
+                      updateCubit.nameController.text.isEmpty
+                          ? sl<HomeCubit>().chefModel!.name
+                          : updateCubit.nameController.text;
                   updateCubit.phoneController.text =
                       sl<HomeCubit>().chefModel!.phone;
                   updateCubit.locationController.text =
