@@ -84,7 +84,7 @@ class ChangePasswordScreen extends StatelessWidget {
                         isPassword:
                             BlocProvider.of<UpdatePasswordCubit>(context)
                                 .isOldPasswordsShowing,
-                        hint: AppStrings.pleaseEnterValidPassword.tr(context),
+                        hint: AppStrings.oldPassword.tr(context),
                         label: AppStrings.oldPassword.tr(context),
                         validate: (data) {
                           if (data!.length < 6 || data.isEmpty) {
@@ -111,7 +111,7 @@ class ChangePasswordScreen extends StatelessWidget {
                           BlocProvider.of<UpdatePasswordCubit>(context)
                               .updateNewPasswordSuffixIcon();
                         },
-                        hint: AppStrings.pleaseEnterValidPassword.tr(context),
+                        hint: AppStrings.newPassword.tr(context),
                         label: AppStrings.newPassword.tr(context),
                         validate: (data) {
                           if (data!.length < 6 || data.isEmpty) {
@@ -145,7 +145,7 @@ class ChangePasswordScreen extends StatelessWidget {
                           BlocProvider.of<UpdatePasswordCubit>(context)
                               .confirmPasswordSuffixIcon();
                         },
-                        hint: AppStrings.pleaseEnterValidPassword.tr(context),
+                        hint: AppStrings.confirmPassword.tr(context),
                         label: AppStrings.confirmPassword.tr(context),
                         validate: (data) {
                           if (data!.length < 6 || data.isEmpty) {
