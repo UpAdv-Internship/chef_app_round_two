@@ -57,20 +57,34 @@ class UpdateProfileScreen extends StatelessWidget {
                 builder: (context, state) {
                   final updateCubit =
                       BlocProvider.of<UpdateProfileCubit>(context);
+                  //* Name Controller
                   updateCubit.nameController.text =
                       updateCubit.nameController.text.isEmpty
                           ? sl<HomeCubit>().chefModel!.name
                           : updateCubit.nameController.text;
+                  //* Phone Controller
                   updateCubit.phoneController.text =
-                      sl<HomeCubit>().chefModel!.phone;
+                      updateCubit.phoneController.text.isEmpty
+                          ? sl<HomeCubit>().chefModel!.phone
+                          : updateCubit.phoneController.text;
+                  //* Location Controller
                   updateCubit.locationController.text =
                       sl<UpdateProfileCubit>().currentAddress.toString();
+                  //* Brand Name Controller
                   updateCubit.brandNameController.text =
-                      sl<HomeCubit>().chefModel!.brandName;
+                      updateCubit.brandNameController.text.isEmpty
+                          ? sl<HomeCubit>().chefModel!.brandName
+                          : updateCubit.brandNameController.text;
+                  //* Minimum Charge Controller
                   updateCubit.minChargeController.text =
-                      '${sl<HomeCubit>().chefModel!.minCharge}';
+                      updateCubit.minChargeController.text.isEmpty
+                          ? '${sl<HomeCubit>().chefModel!.minCharge}'
+                          : updateCubit.minChargeController.text;
+                  //* Description Controller
                   updateCubit.discController.text =
-                      sl<HomeCubit>().chefModel!.disc;
+                      updateCubit.discController.text.isEmpty
+                          ? sl<HomeCubit>().chefModel!.disc
+                          : updateCubit.discController.text;
                   return SingleChildScrollView(
                       child: Column(
                     children: [
