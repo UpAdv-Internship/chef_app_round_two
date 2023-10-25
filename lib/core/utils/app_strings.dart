@@ -110,4 +110,6 @@ class AppStrings {
   static const String backId = 'backId';
   static const String healthCertificate = 'healthCertificate';
   static const String signUpSuccessfully = 'signUpSuccessfully';
+  static const String noInternetAccess = 'noInternetAccess';
+  static const String checkYourNetwork = 'checkYourNetwork';
 }

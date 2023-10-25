@@ -9,7 +9,7 @@ class UpdatePasswordCubit extends Cubit<UpdatePasswordState> {
   final UpdatePasswordRepository changePassRepo;
   GlobalKey<FormState> updatePasswordKey = GlobalKey<FormState>();
 
-//new password
+//! new password
   TextEditingController newPassController = TextEditingController();
 
   bool isNewPasswordsShowing = true;
@@ -21,7 +21,7 @@ class UpdatePasswordCubit extends Cubit<UpdatePasswordState> {
     emit(UpdateNewPasswordSuffixIcon());
   }
 
-  //old password
+  //! old password
   TextEditingController oldPassController = TextEditingController();
 
   bool isOldPasswordsShowing = true;
@@ -33,7 +33,7 @@ class UpdatePasswordCubit extends Cubit<UpdatePasswordState> {
     emit(UpdateOldPasswordSuffixIcon());
   }
 
-  //confirm password
+  //! confirm password
   TextEditingController confirmPassController = TextEditingController();
 
   bool isConfirmPasswordsShowing = true;
@@ -54,5 +54,12 @@ class UpdatePasswordCubit extends Cubit<UpdatePasswordState> {
     );
     result.fold((l) => emit(UpdatePasswordErrorState(l)),
         (r) => emit(UpdatePasswordSuccessState(r)));
+  }
+
+  //! Clear Controllers
+  clearController() {
+    oldPassController.clear();
+    newPassController.clear();
+    confirmPassController.clear();
   }
 }

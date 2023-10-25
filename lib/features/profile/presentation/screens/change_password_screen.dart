@@ -1,4 +1,5 @@
 import 'package:chef_app_round_two/core/local/app_locale.dart';
+import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,15 +14,20 @@ import '../cubits/change_password_cubit/update_password_state.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   const ChangePasswordScreen({super.key});
-//final TextEditingController oldPassword = TextEditingController();
-//final TextEditingController newPassword = TextEditingController();
-//final TextEditingController confirmPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: Text(AppStrings.changePassword.tr(context)),
+          leading: IconButton(
+            onPressed: () {
+              navigateReplacment(context: context, route: Routes.home);
+              sl<UpdatePasswordCubit>().clearController();
+            },
+            icon: const Icon(Icons.arrow_back),
+          ),
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -78,7 +84,8 @@ class ChangePasswordScreen extends StatelessWidget {
                         isPassword:
                             BlocProvider.of<UpdatePasswordCubit>(context)
                                 .isOldPasswordsShowing,
-                        hint: AppStrings.oldPassword.tr(context),
+                        hint: AppStrings.pleaseEnterValidPassword.tr(context),
+                        label: AppStrings.oldPassword.tr(context),
                         validate: (data) {
                           if (data!.length < 6 || data.isEmpty) {
                             return AppStrings.pleaseEnterValidPassword
@@ -104,7 +111,8 @@ class ChangePasswordScreen extends StatelessWidget {
                           BlocProvider.of<UpdatePasswordCubit>(context)
                               .updateNewPasswordSuffixIcon();
                         },
-                        hint: AppStrings.newPassword.tr(context),
+                        hint: AppStrings.pleaseEnterValidPassword.tr(context),
+                        label: AppStrings.newPassword.tr(context),
                         validate: (data) {
                           if (data!.length < 6 || data.isEmpty) {
                             return AppStrings.pleaseEnterValidPassword
@@ -137,7 +145,8 @@ class ChangePasswordScreen extends StatelessWidget {
                           BlocProvider.of<UpdatePasswordCubit>(context)
                               .confirmPasswordSuffixIcon();
                         },
-                        hint: AppStrings.confirmPassword.tr(context),
+                        hint: AppStrings.pleaseEnterValidPassword.tr(context),
+                        label: AppStrings.confirmPassword.tr(context),
                         validate: (data) {
                           if (data!.length < 6 || data.isEmpty) {
                             return AppStrings.pleaseEnterValidPassword

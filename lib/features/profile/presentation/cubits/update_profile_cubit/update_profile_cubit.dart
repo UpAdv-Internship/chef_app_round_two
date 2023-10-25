@@ -1,4 +1,3 @@
-
 import 'package:chef_app_round_two/core/services/service_locator.dart';
 import 'package:chef_app_round_two/features/profile/data/repository/profile_repo.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_cubit.dart';
@@ -21,8 +20,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   TextEditingController minChargeController = TextEditingController();
   TextEditingController discController = TextEditingController();
   GlobalKey<FormState> updateProfileKey = GlobalKey<FormState>();
-  // XFile image = XFile(sl<HomeCubit>().profileImage!.path);
-  XFile? image ;
+  XFile? image;
 
   //! Image Picker
   void takePhoto(value) {
@@ -69,12 +67,11 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
       },
     );
   }
-  
-  
+
   //! Location
   Position? currentPosition;
-  String? currentAddress;
-  Map<String,dynamic>? location;
+  String currentAddress = '.....';
+  Map<String, dynamic>? location;
 
   Future<Position> getPosition() async {
     LocationPermission permission;
@@ -91,20 +88,17 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
         print('Location not available !');
       }
     }
-
     return await Geolocator.getCurrentPosition();
   }
-  
-  void getAdress(latitude, longitude) async {
+
+  //! Get Address From Current Position
+  Future getAdress(latitude, longitude) async {
     try {
       emit(GetAddressLoadingState());
       List<Placemark> placemark = await GeocodingPlatform.instance
           .placemarkFromCoordinates(latitude, longitude);
-
       Placemark place = placemark[0];
-
       currentAddress = '${place.country},${place.locality},${place.street},';
-
       location = {
         "name": place.country ?? "Unknown",
         "address": place.locality ?? "Unknown",
@@ -118,5 +112,31 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
       }
     }
   }
-}
 
+  //! Get Location From Api
+  Future getAdressApi() async {
+    try {
+      emit(GetAddressApiLoadingState());
+      var latitude = sl<HomeCubit>().chefModel!.location["coordinates"][1];
+      var longitude = sl<HomeCubit>().chefModel!.location["coordinates"][0];
+      List<Placemark> placemark =
+          await placemarkFromCoordinates(latitude, longitude);
+
+      Placemark place = placemark[0];
+
+      currentAddress = '${place.country},${place.locality},${place.street},';
+
+      location = {
+        "name": place.country ?? "Unknown",
+        "address": place.locality ?? "Unknown",
+        "coordinates": [latitude, longitude]
+      };
+      emit(GetAddressApiSuccessState());
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+        emit(GetAddressApiErrorState());
+      }
+    }
+  }
+}
