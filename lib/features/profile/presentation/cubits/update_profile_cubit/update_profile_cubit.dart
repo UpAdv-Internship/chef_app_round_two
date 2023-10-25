@@ -22,6 +22,16 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   GlobalKey<FormState> updateProfileKey = GlobalKey<FormState>();
   XFile? image;
 
+  //! Clear Controllers
+  clearController() {
+    nameController.clear();
+    phoneController.clear();
+    locationController.clear();
+    brandNameController.clear();
+    minChargeController.clear();
+    discController.clear();
+  }
+
   //! Image Picker
   void takePhoto(value) {
     image = value;
