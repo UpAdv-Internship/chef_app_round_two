@@ -18,7 +18,8 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => sl<UpdateProfileCubit>()..getAdressApi()),
+        BlocProvider(
+            create: (context) => sl<UpdateProfileCubit>()..getAdressApi()),
         BlocProvider(create: (context) => sl<HomeCubit>()..getData()),
         BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<SignUpCubit>()),
@@ -27,6 +28,7 @@ void main() async {
         BlocProvider(create: (context) => sl<ForgetPasswordCubit>()),
         BlocProvider(create: (context) => sl<GlobalCubit>()..getCachedLang()),
       ],
+      //!FINISH APP
       child: const MyApp(),
     ),
   );

@@ -209,6 +209,8 @@ class HomeScreen extends StatelessWidget {
                                               .tr(context)),
                                           SizedBox(height: 20.h),
                                           Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               state is LogoutLoadingState
                                                   ? const CustomLoadingIndicator()
