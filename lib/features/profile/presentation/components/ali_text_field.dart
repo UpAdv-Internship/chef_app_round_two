@@ -41,6 +41,13 @@ class AliTextFormField extends StatelessWidget {
         ),
         hintText: hint,
         labelText: label,
+        labelStyle: const TextStyle(color: AppColors.primary),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(
+            color: AppColors.primary,
+          ),
+        ),
       ),
     );
   }

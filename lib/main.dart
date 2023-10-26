@@ -18,7 +18,7 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => sl<UpdateProfileCubit>()),
+        BlocProvider(create: (context) => sl<UpdateProfileCubit>()..getAdressApi()),
         BlocProvider(create: (context) => sl<HomeCubit>()..getData()),
         BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<SignUpCubit>()),

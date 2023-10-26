@@ -28,6 +28,14 @@ class UpdateProfileScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(AppStrings.editProfile.tr(context)),
           backgroundColor: AppColors.primary,
+          leading: IconButton(
+            onPressed: () {
+              sl<UpdateProfileCubit>().image = null;
+              sl<UpdateProfileCubit>().clearController();
+              navigateReplacment(context: context, route: Routes.home);
+            },
+            icon: const Icon(Icons.arrow_back),
+          ),
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -49,307 +57,313 @@ class UpdateProfileScreen extends StatelessWidget {
                 builder: (context, state) {
                   final updateCubit =
                       BlocProvider.of<UpdateProfileCubit>(context);
+                  //* Name Controller
                   updateCubit.nameController.text =
-                      sl<HomeCubit>().chefModel!.name;
+                      updateCubit.nameController.text.isEmpty
+                          ? sl<HomeCubit>().chefModel!.name
+                          : updateCubit.nameController.text;
+                  //* Phone Controller
                   updateCubit.phoneController.text =
-                      sl<HomeCubit>().chefModel!.phone;
+                      updateCubit.phoneController.text.isEmpty
+                          ? sl<HomeCubit>().chefModel!.phone
+                          : updateCubit.phoneController.text;
+                  //* Location Controller
                   updateCubit.locationController.text =
-                      updateCubit.currentAddress.toString();
+                      sl<UpdateProfileCubit>().currentAddress.toString();
+                  //* Brand Name Controller
                   updateCubit.brandNameController.text =
-                      sl<HomeCubit>().chefModel!.brandName;
+                      updateCubit.brandNameController.text.isEmpty
+                          ? sl<HomeCubit>().chefModel!.brandName
+                          : updateCubit.brandNameController.text;
+                  //* Minimum Charge Controller
                   updateCubit.minChargeController.text =
-                      '${sl<HomeCubit>().chefModel!.minCharge}';
+                      updateCubit.minChargeController.text.isEmpty
+                          ? '${sl<HomeCubit>().chefModel!.minCharge}'
+                          : updateCubit.minChargeController.text;
+                  //* Description Controller
                   updateCubit.discController.text =
-                      sl<HomeCubit>().chefModel!.disc;
+                      updateCubit.discController.text.isEmpty
+                          ? sl<HomeCubit>().chefModel!.disc
+                          : updateCubit.discController.text;
                   return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        //! Image Picker
-                        SizedBox(
-                          width: 200.w,
-                          height: 200.h,
-                          child: Stack(
-                            children: [
-                              //* Image
-                              Align(
-                                alignment: Alignment.center,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(85),
-                                  child: Container(
-                                      padding: const EdgeInsets.all(0),
-                                      width: 170,
-                                      height: 170,
-                                      child: sl<UpdateProfileCubit>().image ==
-                                              null
-                                          ? CachedNetworkImage(
-                                              fit: BoxFit.fill,
-                                              imageUrl: sl<HomeCubit>()
-                                                  .chefModel!
-                                                  .profilePic,
-                                              placeholder: (context, url) =>
-                                                  Shimmer.fromColors(
-                                                baseColor: AppColors.grey,
-                                                highlightColor: AppColors.white,
-                                                enabled: true,
-                                                child: const CircleAvatar(
-                                                  radius: 85,
-                                                  backgroundColor:
-                                                      AppColors.grey,
-                                                ),
+                      child: Column(
+                    children: [
+                      //! Image Picker
+                      SizedBox(
+                        width: 200.w,
+                        height: 200.h,
+                        child: Stack(
+                          children: [
+                            //* Image
+                            Align(
+                              alignment: Alignment.center,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(85),
+                                child: Container(
+                                    padding: const EdgeInsets.all(0),
+                                    width: 170,
+                                    height: 170,
+                                    child: sl<UpdateProfileCubit>().image ==
+                                            null
+                                        ? CachedNetworkImage(
+                                            fit: BoxFit.fill,
+                                            imageUrl: sl<HomeCubit>()
+                                                .chefModel!
+                                                .profilePic,
+                                            placeholder: (context, url) =>
+                                                Shimmer.fromColors(
+                                              baseColor: AppColors.grey,
+                                              highlightColor: AppColors.white,
+                                              enabled: true,
+                                              child: const CircleAvatar(
+                                                radius: 85,
+                                                backgroundColor: AppColors.grey,
                                               ),
-                                            )
-                                          : Image.file(
-                                              File(sl<UpdateProfileCubit>()
-                                                  .image!
-                                                  .path),
-                                              fit: BoxFit.fill,
-                                            )),
-                                ),
+                                            ),
+                                          )
+                                        : Image.file(
+                                            File(sl<UpdateProfileCubit>()
+                                                .image!
+                                                .path),
+                                            fit: BoxFit.fill,
+                                          )),
                               ),
-                              //* Edit Button
-                              Positioned(
-                                bottom: 15.h,
-                                right: 15.w,
-                                child: InkWell(
-                                  child: const CircleAvatar(
-                                    backgroundColor: AppColors.primary,
-                                    child: Icon(
-                                      Icons.edit,
-                                      color: AppColors.white,
-                                    ),
+                            ),
+                            //* Edit Button
+                            Positioned(
+                              bottom: 15.h,
+                              right: 15.w,
+                              child: InkWell(
+                                child: const CircleAvatar(
+                                  backgroundColor: AppColors.primary,
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: AppColors.white,
                                   ),
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        contentPadding: const EdgeInsets.all(0),
-                                        content: Container(
-                                          color: AppColors.primary,
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              ListTile(
-                                                leading: const Icon(
-                                                  Icons.camera,
-                                                  color: AppColors.white,
-                                                ),
-                                                title: Text(AppStrings.camera
-                                                    .tr(context)),
-                                                titleTextStyle: const TextStyle(
-                                                  color: AppColors.white,
-                                                  fontSize: 20,
-                                                ),
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                onTap: () {
-                                                  Navigator.pop(context);
-                                                  updateCubit
-                                                      .imagePicker(
-                                                          ImageSource.camera)
-                                                      .then((value) =>
-                                                          updateCubit.takePhoto(
-                                                              value));
-                                                },
-                                              ),
-                                              ListTile(
-                                                leading: const Icon(Icons.photo,
-                                                    color: AppColors.white),
-                                                title: Text(AppStrings.gallery
-                                                    .tr(context)),
-                                                titleTextStyle: const TextStyle(
-                                                  color: AppColors.white,
-                                                  fontSize: 20,
-                                                ),
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                onTap: () {
-                                                  Navigator.pop(context);
-                                                  updateCubit
-                                                      .imagePicker(
-                                                          ImageSource.gallery)
-                                                      .then((value) =>
-                                                          updateCubit.takePhoto(
-                                                              value));
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 20.h),
-                        //! Form
-                        Form(
-                          key: updateCubit.updateProfileKey,
-                          child: Column(
-                            children: [
-                              //* Name TextField
-                              ProfileTextFormField(
-                                controller: updateCubit.nameController,
-                                label: AppStrings.name.tr(context),
-                                hint: AppStrings.enterYourName.tr(context),
-                                keyboardType: TextInputType.name,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Cannot be empty!';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              SizedBox(height: 15.h),
-                              //* Phone TextField
-                              ProfileTextFormField(
-                                controller: updateCubit.phoneController,
-                                label: AppStrings.phoneNumber.tr(context),
-                                hint: AppStrings.enterPhoneNumber.tr(context),
-                                keyboardType: TextInputType.number,
-                                validator: (value) {
-                                  if (value!.length != 11) {
-                                    return AppStrings.pleaseEnterValidNumber
-                                        .tr(context);
-                                  }
-                                  if (value.isEmpty) {
-                                    return AppStrings.thisFieldIsRequired
-                                        .tr(context);
-                                  }
-                                  return null;
-                                },
-                              ),
-                              SizedBox(height: 15.h),
-                              //* Location TextField
-                              ProfileTextFormField(
-                                controller: updateCubit.locationController,
-                                label: AppStrings.location.tr(context),
-                                hint: updateCubit.currentAddress ??
-                                    AppStrings.location.tr(context),
-                                keyboardType: TextInputType.streetAddress,
-                                validator: (value) {
-                                  if (updateCubit.location == null) {
-                                    return AppStrings.thisFieldIsRequired
-                                        .tr(context);
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                readOnly: true,
-                                suffixIcon: state is GetAddressLoadingState
-                                    ? const CustomSpiner()
-                                    : state is GetAddressSuccessState
-                                        ? const Icon(Icons.done,
-                                            color: AppColors.primary)
-                                        : state is GetAddressFailureState
-                                            ? const Icon(
-                                                Icons.error,
-                                                color: AppColors.red,
-                                              )
-                                            : IconButton(
-                                                icon: const Icon(Icons.map,
-                                                    color: AppColors.primary),
-                                                onPressed: () async {
-                                                  updateCubit.currentPosition =
-                                                      await updateCubit
-                                                          .getPosition();
-
-                                                  updateCubit.getAdress(
-                                                      updateCubit
-                                                          .currentPosition!
-                                                          .latitude,
-                                                      updateCubit
-                                                          .currentPosition!
-                                                          .longitude);
-                                                },
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      contentPadding: const EdgeInsets.all(0),
+                                      content: Container(
+                                        color: AppColors.primary,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            ListTile(
+                                              leading: const Icon(
+                                                Icons.camera,
+                                                color: AppColors.white,
                                               ),
-                              ),
-
-                              SizedBox(height: 15.h),
-                              //* Brand Name TextField
-                              ProfileTextFormField(
-                                controller: updateCubit.brandNameController,
-                                label: AppStrings.brandName.tr(context),
-                                hint: AppStrings.pleaseEnterValidBrandName
-                                    .tr(context),
-                                keyboardType: TextInputType.name,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return AppStrings.thisFieldIsRequired
-                                        .tr(context);
-                                  }
-                                  return null;
-                                },
-                              ),
-                              SizedBox(height: 15.h),
-                              //* Minimun Charge TextField
-                              ProfileTextFormField(
-                                controller: updateCubit.minChargeController,
-                                label: AppStrings.minCharge.tr(context),
-                                hint: AppStrings.pleaseEnterValidMinCharge
-                                    .tr(context),
-                                keyboardType: TextInputType.number,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return AppStrings.thisFieldIsRequired
-                                        .tr(context);
-                                  }
-                                  return null;
-                                },
-                              ),
-                              SizedBox(height: 15.h),
-                              //* Discreption TextField
-                              ProfileTextFormField(
-                                controller: updateCubit.discController,
-                                label: AppStrings.description.tr(context),
-                                hint:
-                                    AppStrings.pleaseEnterValidDesc.tr(context),
-                                keyboardType: TextInputType.text,
-                                validator: (value) {
-                                  if (value!.length <= 20) {
-                                    return AppStrings
-                                        .pleaseEnterValidChargeAtLeastTwentyChar
-                                        .tr(context);
-                                  }
-                                  if (value.isEmpty) {
-                                    return AppStrings.thisFieldIsRequired
-                                        .tr(context);
-                                  }
-                                  return null;
-                                },
-                              ),
-                              SizedBox(height: 15.h),
-                              //! Update Button
-                              state is UpdateProfileLoadingState
-                                  ? const CircularProgressIndicator(
-                                      color: AppColors.primary,
-                                    )
-                                  : ElevatedButton(
-                                      onPressed: () {
-                                        if (updateCubit
-                                            .updateProfileKey.currentState!
-                                            .validate()) {
-                                          updateCubit.updateProfile();
-                                        }
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                                              title: Text(AppStrings.camera
+                                                  .tr(context)),
+                                              titleTextStyle: const TextStyle(
+                                                color: AppColors.white,
+                                                fontSize: 20,
+                                              ),
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                                updateCubit
+                                                    .imagePicker(
+                                                        ImageSource.camera)
+                                                    .then((value) => updateCubit
+                                                        .takePhoto(value));
+                                              },
+                                            ),
+                                            ListTile(
+                                              leading: const Icon(Icons.photo,
+                                                  color: AppColors.white),
+                                              title: Text(AppStrings.gallery
+                                                  .tr(context)),
+                                              titleTextStyle: const TextStyle(
+                                                color: AppColors.white,
+                                                fontSize: 20,
+                                              ),
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                                updateCubit
+                                                    .imagePicker(
+                                                        ImageSource.gallery)
+                                                    .then((value) => updateCubit
+                                                        .takePhoto(value));
+                                              },
+                                            ),
+                                          ],
                                         ),
-                                        fixedSize:
-                                            const Size(double.maxFinite, 50),
                                       ),
-                                      child: Text(AppStrings.save.tr(context)),
                                     ),
-                            ],
-                          ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
+                      ),
+                      SizedBox(height: 20.h),
+                      //! Form
+                      Form(
+                        key: updateCubit.updateProfileKey,
+                        child: Column(
+                          children: [
+                            //* Name TextField
+                            ProfileTextFormField(
+                              controller: updateCubit.nameController,
+                              label: AppStrings.name.tr(context),
+                              hint: AppStrings.enterYourName.tr(context),
+                              keyboardType: TextInputType.name,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Cannot be empty!';
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(height: 15.h),
+                            //* Phone TextField
+                            ProfileTextFormField(
+                              controller: updateCubit.phoneController,
+                              label: AppStrings.phoneNumber.tr(context),
+                              hint: AppStrings.enterPhoneNumber.tr(context),
+                              keyboardType: TextInputType.number,
+                              validator: (value) {
+                                if (value!.length != 11) {
+                                  return AppStrings.pleaseEnterValidNumber
+                                      .tr(context);
+                                }
+                                if (value.isEmpty) {
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(height: 15.h),
+                            //* Location TextField
+                            ProfileTextFormField(
+                              controller: updateCubit.locationController,
+                              label: AppStrings.location.tr(context),
+                              hint: AppStrings.location.tr(context),
+                              keyboardType: TextInputType.streetAddress,
+                              validator: (value) {
+                                if (updateCubit.location == null) {
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
+                                } else {
+                                  return null;
+                                }
+                              },
+                              readOnly: true,
+                              suffixIcon: state is GetAddressLoadingState
+                                  ? const CustomSpiner()
+                                  : state is GetAddressSuccessState
+                                      ? const Icon(Icons.done,
+                                          color: AppColors.primary)
+                                      : state is GetAddressFailureState
+                                          ? const Icon(
+                                              Icons.error,
+                                              color: AppColors.red,
+                                            )
+                                          : IconButton(
+                                              icon: const Icon(Icons.map,
+                                                  color: AppColors.primary),
+                                              onPressed: () async {
+                                                updateCubit.currentPosition =
+                                                    await updateCubit
+                                                        .getPosition();
+                                                updateCubit.getAdress(
+                                                    updateCubit.currentPosition!
+                                                        .latitude,
+                                                    updateCubit.currentPosition!
+                                                        .longitude);
+                                              },
+                                            ),
+                            ),
+
+                            SizedBox(height: 15.h),
+                            //* Brand Name TextField
+                            ProfileTextFormField(
+                              controller: updateCubit.brandNameController,
+                              label: AppStrings.brandName.tr(context),
+                              hint: AppStrings.pleaseEnterValidBrandName
+                                  .tr(context),
+                              keyboardType: TextInputType.name,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(height: 15.h),
+                            //* Minimun Charge TextField
+                            ProfileTextFormField(
+                              controller: updateCubit.minChargeController,
+                              label: AppStrings.minCharge.tr(context),
+                              hint: AppStrings.pleaseEnterValidMinCharge
+                                  .tr(context),
+                              keyboardType: TextInputType.number,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(height: 15.h),
+                            //* Discreption TextField
+                            ProfileTextFormField(
+                              controller: updateCubit.discController,
+                              label: AppStrings.description.tr(context),
+                              hint: AppStrings.pleaseEnterValidDesc.tr(context),
+                              keyboardType: TextInputType.text,
+                              validator: (value) {
+                                if (value!.length <= 20) {
+                                  return AppStrings
+                                      .pleaseEnterValidChargeAtLeastTwentyChar
+                                      .tr(context);
+                                }
+                                if (value.isEmpty) {
+                                  return AppStrings.thisFieldIsRequired
+                                      .tr(context);
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(height: 15.h),
+                            //! Update Button
+                            state is UpdateProfileLoadingState
+                                ? const CircularProgressIndicator(
+                                    color: AppColors.primary,
+                                  )
+                                : ElevatedButton(
+                                    onPressed: () {
+                                      if (updateCubit
+                                          .updateProfileKey.currentState!
+                                          .validate()) {
+                                        updateCubit.updateProfile();
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      fixedSize:
+                                          const Size(double.maxFinite, 50),
+                                    ),
+                                    child: Text(AppStrings.save.tr(context)),
+                                  ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ));
                 },
               ),
             ),

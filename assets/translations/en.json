@@ -84,10 +84,11 @@
     "backId":"Back ID",
     "healthCertificate":"Health Certificate",
     "signUpSuccessfully":"Account Created Successfully",
-    "pleaseEnterValidMinCharge":"Plaese Enter Your Min Charge",
     "sureToLogout":"Sure To Logout",
     "enterPhoneNumber": "Enter Your Name",
     "save": "Save",
-    "thisEmailNotValid":"This Email Not Valid"
+    "thisEmailNotValid":"This Email Not Valid",
+    "noInternetAccess":"No Enternet Access",
+    "checkYourNetwork":"Check Your Network"
     
 }

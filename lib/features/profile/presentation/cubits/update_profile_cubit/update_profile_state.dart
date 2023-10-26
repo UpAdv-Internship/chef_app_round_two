@@ -25,3 +25,7 @@ final class GetAddressFailureState extends UpdateProfileState {
 }
 
 final class GetAddressLoadingState extends UpdateProfileState {}
+
+final class GetAddressApiSuccessState extends UpdateProfileState {}
+final class GetAddressApiErrorState extends UpdateProfileState {}
+final class GetAddressApiLoadingState extends UpdateProfileState {}

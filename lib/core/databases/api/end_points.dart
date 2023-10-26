@@ -19,6 +19,10 @@ class EndPoint {
     return '$chefGet$id';
   }
 
+  // static String deleteChef(id) {
+  //   return '$chefDelete$id';
+  // }
+
   static String getUpdateMealEndPoints(id) {
     return '$updateMeal$id';
   }

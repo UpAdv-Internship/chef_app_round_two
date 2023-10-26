@@ -1,8 +1,8 @@
-
 import 'package:chef_app_round_two/features/profile/data/model/chef_data_model.dart';
 import 'package:chef_app_round_two/features/profile/data/repository/profile_repo.dart';
 import 'package:chef_app_round_two/features/profile/presentation/cubits/home_cubit/home_state.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
@@ -30,12 +30,13 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   //! Logout
-  Future logout() async {
+  Future logout(context) async {
     emit(LogoutLoadingState());
     final res = await profileRepo.logout();
+    Navigator.pop(context);
     res.fold(
       (l) => emit(LogoutErrorState(message: l)),
-      (r) {                
+      (r) {
         emit(LogoutSuccesState(message: r));
       },
     );
