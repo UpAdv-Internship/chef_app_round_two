@@ -26,7 +26,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void navigationAfterThreeSeconds(context) {
     Future.delayed(const Duration(seconds: 3)).then((value) async {
       await sl<CacheHelper>().getData(key: Apikeys.token) == null
-          ? navigateReplacment(context: context, route: Routes.changeLang)
+          ? sl<CacheHelper>().sharedPreferences.getString("cachedCode") == null
+              ? navigateReplacment(context: context, route: Routes.changeLang)
+              : navigateReplacment(context: context, route: Routes.login)
           : navigateReplacment(context: context, route: Routes.home);
     });
   }

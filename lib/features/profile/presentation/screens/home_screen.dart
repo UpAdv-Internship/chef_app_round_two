@@ -182,6 +182,17 @@ class HomeScreen extends StatelessWidget {
                                 }
                               },
                             ),
+                            //* Settings
+                            CustomListTile(
+                              title: AppStrings.settings.tr(context),
+                              onTap: () {
+                                if (state is GetDataSuccessState) {
+                                  navigate(
+                                      context: context,
+                                      route: Routes.settingsScreen);
+                                }
+                              },
+                            ),
                             //* Logout
                             CustomListTile(
                               title: AppStrings.logout.tr(context),

@@ -89,6 +89,7 @@
     "save": "Save",
     "thisEmailNotValid":"This Email Not Valid",
     "noInternetAccess":"No Enternet Access",
-    "checkYourNetwork":"Check Your Network"
+    "checkYourNetwork":"Check Your Network",
+    "language": "English"
     
 }

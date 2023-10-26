@@ -90,5 +90,6 @@
     "healthCertificate":"الشهاده الصحيه",
     "signUpSuccessfully":"تم انشاء الحساب بنجاح",
     "noInternetAccess": "لا يوجد إتصال بالأنترنت",
-    "checkYourNetwork": "تحقق من الأتصال"
+    "checkYourNetwork": "تحقق من الأتصال",
+    "language": "العربية"
 }

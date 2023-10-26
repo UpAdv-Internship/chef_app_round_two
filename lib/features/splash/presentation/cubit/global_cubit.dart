@@ -5,24 +5,23 @@ import '../../../../core/services/service_locator.dart';
 
 import 'global_state.dart';
 
-class GlobalCubit extends Cubit<GlobalState>{
-  GlobalCubit(): super(GlobalInitial());
-  //bool isArabic = false;
+class GlobalCubit extends Cubit<GlobalState> {
+  GlobalCubit() : super(GlobalInitial());
   String langCode = 'en';
-  void changeLang(String codeLang)async{
+  void changeLang(String codeLang) async {
     emit(ChangeLangLoading());
-    //isArabic=!isArabic;
     langCode = codeLang;
     await sl<CacheHelper>().cacheLanguage(codeLang);
     emit(ChangeLangSucess());
   }
-  void getCachedLang(){
+
+  void getCachedLang() {
     emit(ChangeLangLoading());
-    final cachedLang=sl<CacheHelper>().getCachedLanguage();
+    final cachedLang = sl<CacheHelper>().getCachedLanguage();
     langCode = cachedLang;
     emit(ChangeLangSucess());
   }
-  /*
+
   bool switchOn = false;
   void switchLang(value) {
     switchOn = !switchOn;
@@ -30,5 +29,4 @@ class GlobalCubit extends Cubit<GlobalState>{
     langCode = sl<CacheHelper>().getDataString(key: 'lang')!;
     emit(ChangeLangSucess());
   }
-  */
 }
