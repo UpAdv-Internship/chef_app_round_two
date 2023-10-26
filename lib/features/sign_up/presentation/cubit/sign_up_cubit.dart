@@ -141,6 +141,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   }
 
   //!passsword suffixIcon
+  //!passsword suffixIconaa
   bool isLoginPasswordsShowing = true;
   bool isLoginComfirmPasswordsShowing = true;
 
