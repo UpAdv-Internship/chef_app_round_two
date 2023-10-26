@@ -68,7 +68,7 @@ class ChangeLangScreen extends StatelessWidget {
                                 onPressed: () {
                                   BlocProvider.of<GlobalCubit>(context)
                                       .changeLang('en');
-                                  navigate(context: context, route: Routes.login);
+                                  navigateReplacment(context: context, route: Routes.login);
                                 },
                                 style: Theme.of(context)
                                     .elevatedButtonTheme
@@ -91,7 +91,7 @@ class ChangeLangScreen extends StatelessWidget {
                                 onPressed: () {
                                   BlocProvider.of<GlobalCubit>(context)
                                       .changeLang('ar');
-                                  navigate(context: context, route: Routes.login);
+                                  navigateReplacment(context: context, route: Routes.login);
                                 },
                                 style: Theme.of(context)
                                     .elevatedButtonTheme
