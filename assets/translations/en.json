@@ -7,7 +7,7 @@
     "sign_in": "Login",
     "signUp": "Sign Up",
     "loginSucessfully": "Login Sucessfully",
-    "loginFailed": "Invalid Data",
+    "loginFailed": "Login Failed , Check Your Email and Password",
     "email": "Email",
     "name": "Name",
     "phone_number": "Phone Number",

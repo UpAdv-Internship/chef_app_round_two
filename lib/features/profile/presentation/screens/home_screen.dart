@@ -28,7 +28,8 @@ class HomeScreen extends StatelessWidget {
           listener: (context, state) {
             if (state is LogoutSuccesState) {
               showToast(
-                  message: state.message, toastStates: ToastStates.success);
+                  message: AppStrings.logoutSucessfully.tr(context),
+                  toastStates: ToastStates.success);
               sl<CacheHelper>().clearData(key: Apikeys.token);
               navigateReplacment(context: context, route: Routes.login);
             }

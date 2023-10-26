@@ -31,7 +31,6 @@ class LoginScreen extends StatelessWidget {
                     AppAssets.backgroundTwo,
                     width: double.infinity,
                     fit: BoxFit.fill,
-                    
                   ),
                   SizedBox(
                     height: 92.h,
@@ -52,13 +51,13 @@ class LoginScreen extends StatelessWidget {
                   listener: (context, state) {
                     if (state is LoginSuccessState) {
                       showToast(
-                          message: AppStrings.loginSucessfully,
+                          message: AppStrings.loginSucessfully.tr(context),
                           toastStates: ToastStates.success);
                       navigateReplacment(context: context, route: Routes.home);
                     }
                     if (state is LoginErrorState) {
                       showToast(
-                          message: AppStrings.loginFailed,
+                          message: AppStrings.loginFailed.tr(context),
                           toastStates: ToastStates.error);
                     }
                   },
@@ -77,7 +76,8 @@ class LoginScreen extends StatelessWidget {
                             validate: (data) {
                               if (data!.isEmpty ||
                                   !data.contains('@gmail.com')) {
-                                return AppStrings.pleaseEnterValidEmail.tr(context);
+                                return AppStrings.pleaseEnterValidEmail
+                                    .tr(context);
                               }
 
                               return null;
@@ -99,7 +99,8 @@ class LoginScreen extends StatelessWidget {
                             hint: AppStrings.password.tr(context),
                             validate: (data) {
                               if (data!.length < 6 || data.isEmpty) {
-                                return AppStrings.pleaseEnterValidPassword.tr(context);
+                                return AppStrings.pleaseEnterValidPassword
+                                    .tr(context);
                               }
 
                               return null;
@@ -113,7 +114,9 @@ class LoginScreen extends StatelessWidget {
                             children: [
                               TextButton(
                                   onPressed: () {
-                                    navigateReplacment(context: context, route: Routes.forgetPasswordScreen);
+                                    navigateReplacment(
+                                        context: context,
+                                        route: Routes.forgetPasswordScreen);
                                   },
                                   child: Text(
                                     AppStrings.forgetPassword.tr(context),
@@ -147,7 +150,7 @@ class LoginScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                               Text(
+                              Text(
                                 AppStrings.dontHaveAnAccount.tr(context),
                               ),
                               TextButton(
